@@ -18,11 +18,11 @@ YELLOW_COLOR=\033[33;01m
  
 MSG=$(YELLOW_COLOR)++ Compile $(@:%.tex.json=%.pdf)$(NO_COLOR)
 PRINT_MSG = printf "$(MSG)\n"
+	
+all: initDir $(PDF_FILES)
 
 test: initDir book-result/Slides/1-ToReview/Design-LateBoundClassMethodsAtWork.pdf
 	open book-result/Slides/1-ToReview/Design-LateBoundClassMethodsAtWork.pdf
-	
-all: initDir $(PDF_FILES)
 
 initDir:
 	@mkdir -p $(OUTPUTDIRECTORY)
@@ -32,7 +32,6 @@ initDir:
 	
 $(OUTPUTDIRECTORY)/%.tex.json: %.pillar
 	@$(PRINT_MSG)
-	# ./pillar export --to="Beamer" --outputDirectory=`dirname $@` --outputFile=`basename $@` $<
 	./pillar export --to="Beamer" --outputDirectory=${OUTPUTDIRECTORY} --outputFile=$(<:%.pillar=%.tex.json) $<
 
 $(OUTPUTDIRECTORY)/%.tex: $(OUTPUTDIRECTORY)/%.tex.json
@@ -40,7 +39,7 @@ $(OUTPUTDIRECTORY)/%.tex: $(OUTPUTDIRECTORY)/%.tex.json
 
 $(OUTPUTDIRECTORY)/%.pdf: $(OUTPUTDIRECTORY)/%.tex $(LATEXTEMPLATE)
 	latexmk -silent -outdir=`dirname $@` -aux-directory=`dirname $@` -pdf $< 
-	rm -f `dirname $@`/*.aux `dirname $@`/*.fls `dirname $@`/*.log `dirname $@`/*.fdb_latexmk `dirname $@`/*.listing `dirname $@`/*.nav `dirname $@`/*.out `dirname $@`/*.snm `dirname $@`/*.toc `dirname $@`/*.vrb #`dirname $@`/*.json `dirname $@`/*.tex 
+	@rm -f `dirname $@`/*.aux `dirname $@`/*.fls `dirname $@`/*.log `dirname $@`/*.fdb_latexmk `dirname $@`/*.listing `dirname $@`/*.nav `dirname $@`/*.out `dirname $@`/*.snm `dirname $@`/*.toc `dirname $@`/*.vrb `dirname $@`/*.json `dirname $@`/*.tex 
 
 $(OUTPUTDIRECTORY)/%.html.json: %.pillar copySupport
 	./pillar export --to="DeckJS" --outputDirectory=$(OUTPUTDIRECTORY) $<
