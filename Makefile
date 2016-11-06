@@ -11,9 +11,6 @@ PILLAR_FILES_DIRS := $(shell find $(SOURCEDIRECTORY) -name '*.pillar' -exec dirn
 PDF_FILES := $(addprefix $(OUTPUTDIRECTORY)/,$(PILLAR_FILES:%.pillar=%.pdf))
 PDF_FILES_DIRS := $(addprefix $(OUTPUTDIRECTORY)/,$(PILLAR_FILES_DIRS))
 
-all: initDir $(PDF_FILES)
-# all: initDir book-result/Slides/2-ToReview/Design-LateBoundClassMethodsAtWork.pdf
-
 NO_COLOR=\033[0m
 # OK_COLOR=\033[32;01m
 # ERROR_COLOR=\033[31;01m
@@ -21,7 +18,12 @@ YELLOW_COLOR=\033[33;01m
  
 MSG=$(YELLOW_COLOR)++ Compile $(@:%.tex.json=%.pdf)$(NO_COLOR)
 PRINT_MSG = printf "$(MSG)\n"
+
+test: initDir book-result/Slides/1-ToReview/Design-LateBoundClassMethodsAtWork.pdf
+	open book-result/Slides/1-ToReview/Design-LateBoundClassMethodsAtWork.pdf
 	
+all: initDir $(PDF_FILES)
+
 initDir:
 	@mkdir -p $(OUTPUTDIRECTORY)
 	@cp -r support/ ${OUTPUTDIRECTORY}
@@ -30,14 +32,15 @@ initDir:
 	
 $(OUTPUTDIRECTORY)/%.tex.json: %.pillar
 	@$(PRINT_MSG)
-	./pillar export --to="Beamer" --outputDirectory=`dirname $@` --outputFile=`basename $@` $<
+	# ./pillar export --to="Beamer" --outputDirectory=`dirname $@` --outputFile=`basename $@` $<
+	./pillar export --to="Beamer" --outputDirectory=${OUTPUTDIRECTORY} --outputFile=$(<:%.pillar=%.tex.json) $<
 
 $(OUTPUTDIRECTORY)/%.tex: $(OUTPUTDIRECTORY)/%.tex.json
 	./mustache --data=$< --template=${LATEXTEMPLATE} > $@ 
 
-$(OUTPUTDIRECTORY)/%.pdf: $(OUTPUTDIRECTORY)/%.tex
+$(OUTPUTDIRECTORY)/%.pdf: $(OUTPUTDIRECTORY)/%.tex $(LATEXTEMPLATE)
 	latexmk -silent -outdir=`dirname $@` -aux-directory=`dirname $@` -pdf $< 
-	@rm -f `dirname $@`/*.aux `dirname $@`/*.fls `dirname $@`/*.log `dirname $@`/*.fdb_latexmk `dirname $@`/*.listing `dirname $@`/*.nav `dirname $@`/*.out `dirname $@`/*.snm `dirname $@`/*.toc `dirname $@`/*.vrb `dirname $@`/*.json `dirname $@`/*.tex 
+	rm -f `dirname $@`/*.aux `dirname $@`/*.fls `dirname $@`/*.log `dirname $@`/*.fdb_latexmk `dirname $@`/*.listing `dirname $@`/*.nav `dirname $@`/*.out `dirname $@`/*.snm `dirname $@`/*.toc `dirname $@`/*.vrb #`dirname $@`/*.json `dirname $@`/*.tex 
 
 $(OUTPUTDIRECTORY)/%.html.json: %.pillar copySupport
 	./pillar export --to="DeckJS" --outputDirectory=$(OUTPUTDIRECTORY) $<

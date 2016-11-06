@@ -12,94 +12,52 @@
 \defbeamertemplate*{title page}{MoocLab}[1][]
 {
 
-% version: logos on the right
-% \begin{textblock*}{0px}(\paperwidth-4.5cm,0.6cm)%
-% \begin{minipage}{5cm}
-% \centering
-% \includegraphics[height=28px]{pharoLogo}\\
-% \includegraphics[height=32px]{inriaLogo}\\
-% \includegraphics[height=30px]{univLilleLogo}\\
-% \includegraphics[height=45px]{minesDouaiLogo}
-% \end{minipage}
-% \end{textblock*}%
+\begin{textblock*}{0px}(0cm,0cm)%
+\includegraphics[height=2cm]{idea2.png}
+\end{textblock*}%
 
-% larger version
-% \begin{textblock*}{0px}(\paperwidth-3.6cm,0cm)%
-% \includegraphics[height=\paperheight]{pharoPhoto2}
-% \end{textblock*}%
 
-\begin{textblock*}{0px}(\paperwidth-4cm,0cm)%
+% \usebeamercolor[fg]{subtitle}
+\fontfamily{ugq}\selectfont\large
+\vspace*{-0.8cm}\hspace*{0.5cm} Object-Oriented\par
+\hspace*{0.1cm} Design Lecture \par
+
+
+\begin{textblock*}{0px}(\paperwidth-3cm,0cm)%
 \includegraphics[height=\paperheight]{pharoPhoto}
 \end{textblock*}%
 
-	% \begin{textblock*}{0px}(\paperwidth-2cm,0.4cm)%
-	% \includegraphics[height=19px]{pharoLogo}
-	% \end{textblock*}%
-
-    \bigskip
-	 \bigskip
-\begin{minipage}{\paperwidth-5cm}
+\vspace*{1.2cm}
+\hspace*{1cm}\begin{minipage}{\paperwidth-4cm}
 	\raggedright
 	\hyphenpenalty=10000
   \usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
     \bigskip
   
   \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
-  \end{minipage}%
   
   
-  \bigskip
+  \medskip
   
-  % \begin{center}
   \usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par
-
-	% ====
-	\bigskip
-	\pgfdeclarehorizontalshading{slideidshade}{1em}{%
-	color(0cm)=(white);
-	color(2cm)=(white!50!Pharo-blue);%
-	color(6.5cm)=(white!50!Pharo-blue);%
-	color(8.5cm)=(white)}%
-
-	\pgfuseshading{slideidshade}%
-
-	\vspace*{-14px}
-
-	\hspace*{3.8cm}{\scriptsize\color{white}{\@slidesid}}
-	% ====	
-
-	% \bigskip
-	% \bigskip
-
-	\footnotesize
-	\usebeamercolor[fg]{subtitle}
-	% {\@slidesid}
-
-	\bigskip
-	\bigskip
 	
+  \smallskip
+  \usebeamercolor[fg]{subtitle}
+  \footnotesize
+  \url{http://stephane.ducasse.free.fr}\par
+  \url{http://car.mines-douai.fr/luc}
+
+ \end{minipage}%
+ 
+
+\begin{textblock*}{4cm}(0.2cm,\paperheight-38px)%
+	\tiny
 	
-	\hspace*{-0.2cm}\includegraphics[height=40px]{pharoLogo}
-	
-	\vspace*{-8px}
-	\hspace*{-0.1cm}\url{http://www.pharo.org}
-	
-	
-	% \end{center}
-	
-% \bigskip
-% \bigskip
-% 
-% \raisebox{2px}{\includegraphics[height=19px]{pharoLogo}}\hskip 3px%
-% \includegraphics[height=26px]{inriaLogo}\hskip 2px%
-% \raisebox{2px}{\includegraphics[height=24px]{univLilleLogo}}\hskip 3px%
-% \raisebox{-3px}{\includegraphics[height=29px]{logo-IMT}}\hskip 4px%
-% \raisebox{-5px}{\includegraphics[height=32px]{minesDouaiLogo}}
-% \vspace*{-0.6em}
-% \begin{center}
-% \raisebox{-7px}{\includegraphics[height=40px]{unisciellogo}}\hskip 2em%
-% \includegraphics[height=30px]{unitlogo}
-% \end{center}
+	\includegraphics[height=30px]{pharoLogo}
+	\vspace*{-7px}
+	\hspace*{2px}{\usebeamercolor[fg]{subtitle}\url{http://www.pharo.org}}
+\end{textblock*}%
+
 }
 
 % =========================
