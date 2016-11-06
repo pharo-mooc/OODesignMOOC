@@ -37,7 +37,7 @@ $(OUTPUTDIRECTORY)/%.tex: $(OUTPUTDIRECTORY)/%.tex.json
 
 $(OUTPUTDIRECTORY)/%.pdf: $(OUTPUTDIRECTORY)/%.tex
 	latexmk -silent -outdir=`dirname $@` -aux-directory=`dirname $@` -pdf $< 
-	@rm -f `dirname $@`/*.aux `dirname $@`/*.fls `dirname $@`/*.log `dirname $@`/*.fdb_latexmk `dirname $@`/*.listing `dirname $@`/*.nav `dirname $@`/*.out `dirname $@`/*.snm `dirname $@`/*.toc `dirname $@`/*.vrb `dirname $@`/*.json # `dirname $@`/*.tex 
+	@rm -f `dirname $@`/*.aux `dirname $@`/*.fls `dirname $@`/*.log `dirname $@`/*.fdb_latexmk `dirname $@`/*.listing `dirname $@`/*.nav `dirname $@`/*.out `dirname $@`/*.snm `dirname $@`/*.toc `dirname $@`/*.vrb `dirname $@`/*.json `dirname $@`/*.tex 
 
 $(OUTPUTDIRECTORY)/%.html.json: %.pillar copySupport
 	./pillar export --to="DeckJS" --outputDirectory=$(OUTPUTDIRECTORY) $<
