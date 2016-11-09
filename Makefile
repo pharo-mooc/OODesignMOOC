@@ -26,7 +26,7 @@ test: initDir book-result/Slides/1-ToReview/Design-LateBoundClassMethodsAtWork.p
 
 initDir:
 	@mkdir -p $(OUTPUTDIRECTORY)
-	@cp -r support/ ${OUTPUTDIRECTORY}
+	@cp -r support ${OUTPUTDIRECTORY}
 	@mkdir -p ${PDF_FILES_DIRS}
 	@test -h ${OUTPUTDIRECTORY}/figures || ln -s ../${SOURCEDIRECTORY}/figures ${OUTPUTDIRECTORY}/figures
 	
