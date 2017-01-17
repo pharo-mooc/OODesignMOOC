@@ -1,0 +1,79 @@
+{
+    "title":"Protection and Typing in OO Languages"
+}
+
+${slide:title=What is Protection?}$
+
+
+${slide:title=Common Protection Policies}$
+
+- Public
+- Private
+- Protected
+
+${slide:title=Package in Java}$
+
+Package
+
+${slide:title=Friend in C++}$
+
+A friend function of a class is defined outside that class' scope but it has the right to access all private and protected members of this class. Friend functions appears in the class definition but they are not methods.
+
+[[[
+class Person {
+   string name;
+public:
+   friend void printPerson( Person p );
+   void setName( string n );
+};
+
+/* this is function that does not belong to the Person class
+ but it can access internal properties of instances of it */
+void printPerson( Person p ) {
+	cout << "Person " << p.name << endl;
+}
+]]]
+
+${slide:title=Final in Java}$
+
+A final method in a class cannot be redefined in a subclass.
+
+an heresy in OO world?
+
+${slide:title=Static Types and Protection Policies}$
+
+- Declared by programmers! 
+- Can limit reusability/extensibility => Interface in Java
+
+${slide:title=Ensuring Protection}$
+
+- Compile-time 
+- Dynamically 
+
+${slide:title=Protection in Java}$
+
+Be carreful, private may not be what you expect!
+
+${slide:title=Example in Java}$
+
+[[[language=java
+public class Person {
+    private boolean alive = true;
+	 ...
+    private void 	suicide() { alive = false; } // Private to a person
+
+    public void love(Person p) {
+        myLove = p;
+        if ( this.isMurderer() ) p.suicide();  // <-- Oops, is that possible? yes!
+    }
+	 	 
+     public static void main(String args[]) {
+    	  ...
+	     aBadPerson.setMurderer(true);
+        aBadPerson.love(aLovedPerson);
+        System.out.println(aLovedPerson.isAlive()); // false
+    }  
+}
+]]]
+
+
