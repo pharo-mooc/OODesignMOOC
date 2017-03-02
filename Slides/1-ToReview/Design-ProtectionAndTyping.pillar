@@ -4,16 +4,16 @@
 
 ${slide:title=What is Protection?}$
 
+Controlling access/visibility/... of objects' properties (instance variables / methods) 
 
 ${slide:title=Common Protection Policies}$
 
 - Public
 - Private
 - Protected
-
-${slide:title=Package in Java}$
-
-Package
+- Package (Java)
+- Friend (C++)
+...
 
 ${slide:title=Friend in C++}$
 
@@ -34,27 +34,24 @@ void printPerson( Person p ) {
 }
 ]]]
 
-${slide:title=Final in Java}$
+${slide:title=Other Protection: Final in Java}$
 
 A final method in a class cannot be redefined in a subclass.
 
 an heresy in OO world?
 
-${slide:title=Static Types and Protection Policies}$
-
-- Declared by programmers! 
-- Can limit reusability/extensibility => Interface in Java
-
-${slide:title=Ensuring Protection}$
-
-- Compile-time 
-- Dynamically 
-
-${slide:title=Protection in Java}$
+${slide:title=Private}$
 
 Be carreful, private may not be what you expect!
 
-${slide:title=Example in Java}$
+Usually protected better suits OO thinking
+
+${slide:title=Ensuring Protection}$
+
+- At compile-time (be carreful!)
+- Dynamically 
+
+${slide:title=Private in Java}$
 
 [[[language=java
 public class Person {
@@ -76,4 +73,19 @@ public class Person {
 }
 ]]]
 
+
+${slide:title=Private in Java: What happened?}$
+
+private is not ensured per object
+
+${slide:title=Simple Protection Model in Pharo}$
+
+- instance variables are protected
+- methods are public
+
+${slide:title=Conclusion}$
+
+- Some protection policies are complex 
+- Some protection policies limit extensibility (against OO thinking) 
+- Ensuring protection at compile-time is hard
 
