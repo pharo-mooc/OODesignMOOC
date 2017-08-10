@@ -1,6 +1,6 @@
 SOURCEDIRECTORY = Slides
 OUTPUTDIRECTORY = book-result
-LATEXTEMPLATE = support/templates/slides.pharobeamerdesign.template
+LATEXTEMPLATE = support/templates/slides.pharobeamer.template
 HTMLTEMPLATE = support/templates/presentation.deckjs.template
 
 #include ./support/makefiles/copySupport.mk
