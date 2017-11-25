@@ -1,3 +1,6 @@
+#This file contains some tests showing the handling of private methods in ruby.
+#
+
 class C
 	def zork(arg) ; return arg.x ; end 
 	def fooSendingSelfX ; self.x end

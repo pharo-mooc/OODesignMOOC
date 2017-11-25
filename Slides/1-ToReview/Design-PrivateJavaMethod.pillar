@@ -18,7 +18,7 @@ class B extends A {
 }
 ]]]
 
-Which is called? A.p() or B.p()?
+Which is called? ==A.p()== or ==B.p()==?
 [[[
 A b = new B();
 b.m();
@@ -58,24 +58,73 @@ ${slide:title=Private Methods in Ruby}$
 
 In Ruby private methods are dynamically bound :)
 
+
+${slide:title=Private Methods in Ruby}$
+
 [[[
 class C
-	def zork(arg) ; return arg.x ; end def foo ; self.x end
-	deffoo2; x; end
+	def fooAccessingX; x; end
 	private
-	defx;return1; end
+	def x; return 1; end
 end
 class D < C
 	public
-	defx; return2; end
+	def x; return 2; end
 end
 ]]]
 Results:
 [[[
-C.new.foo ==> failed 
-C.new.foo2 ==> 1 
-D.new.foo ==> 2
+C.new.fooAccessingX ==> 1 
+D.new.fooAccessingX ==> 2
 ]]]
+
+- The private method ==x== is publicly redefined in a subclass
+- Template superclass senders invoke the overriden method ==x==
+
+${slide:title=Private methods are accessible internally}$
+
+Different ways to invoke methods:
+- ==self.x== uses the "external" interface while x the internal one
+
+[[[
+class C
+	def fooSendingSelfX ; self.x end
+	private
+	def x; return 1; end
+end
+class D < C
+	public
+	def x; return 2; end
+end
+]]]
+
+Results:
+[[[
+C.new.fooSendingSelfX ==> failed 
+D.new.fooSendingSelfX ==> 2
+]]]
+
+${slide:title=Object arguments uses the "external" interface}$
+
+[[[
+class C
+	def zork(arg) ; return arg.x ; end 
+	def fooSendingSelfX ; self.x end
+	def fooAccessingX; x; end
+	private
+	def x; return 1; end
+end
+class D < C
+	public
+	def x; return 2; end
+end
+]]]
+
+[[[
+C.new.zork(C.new) ==> failed
+C.new.zork(D.new) ==> 2
+]]]
+
 
 ${slide:title=Conclusion}$
 
