@@ -44,7 +44,7 @@ class B extends A {
    public void f(B b) { print("B.f(B)"); }
 }
 
-A a = new B(); // take care, this is a B!
+A a = new B(); //dynamic type of a is B
 B b = new B();
 a.f(a);      a.f(b);
 b.f(a);      b.f(b);
@@ -63,7 +63,7 @@ class B extends A {
    public void f(B b) { print("B.f(B)"); }
 }
 
-A a = new B(); // take care, this is a B!
+A a = new B(); //dynamic type of a is B
 B b = new B();
 a.f(a);      a.f(b);
 b.f(a);      b.f(b);
@@ -76,7 +76,22 @@ ${slide:title=Explanation}$
 
 Overloading + sub-typing is confusing in Java.
 
-In the presence of a message send, the compiler searches a ''compatible signature'' and stores it. During execution, the lookup algorithm searches for a method with this exact signature, regardless of the dynamic types of arguments.
+- The compiler searches a ''compatible signature'' in the static class of the receiver and argument (use potentially subtyping) and stores it.
+- During execution, the lookup algorithm searches for a method with this exact signature, regardless of the dynamic types of arguments.
+
+${slide:title=Why a.f(b) returns B.f(A)?}$
+
+At compile time
+- Look in the static type of the receiver  (here class A) and check existing method
+- Use static type of the arguments since B is a subtype of A, f(A) matches
+- So we will look for ==fA==
+
+During execution
+
+[[[
+a.f(b) looks for fA in class B
+>> B.f(A)
+]]]
 
 ${slide:title=Looking at a Real Case: a Visitor}$
 
