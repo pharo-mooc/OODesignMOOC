@@ -10,7 +10,6 @@ class D < C
 	def x; return 2; end
 end
 
-
 #C.new.foo
 #=> failed test.ruby:3:in `foo': private method `x' called for #<C:0x007ffef4962fd0> (NoMethodError)
 
@@ -30,3 +29,10 @@ puts "D.new.fooAccessingX"
 puts D.new.fooAccessingX 
 # 2
 
+puts "C.new.zork(C.new)"
+puts "failed"
+# prints "failed"
+
+puts "C.new.zork(D.new)"
+puts C.new.zork(D.new) 
+#2
