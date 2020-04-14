@@ -18,50 +18,34 @@ Regardez la video
 Essence of Object Programming
 
 Sending a message
-===============
+=================
 
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S11-Design-EssenceOfDispatchExo.pdf
-
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week3/C019-W3S01-Design-EssenceOfDispatchNot.pdf
-
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W3/C019SD-W3-S1-v3.mp4
 
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week3/C019-W3S02-Design-EssenceOfDispatch.pdf
-
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W3/C019SD-W3-S2-v3.mp4
 
 Inheritance 
-=========
+===========
 
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week4/C019-W4S01-InheritanceAndLookup-1-Inheritance.pdf
-
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W4/C019SD-W4-S1-v3.mp4
-
-http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week4/C019-W4S02-InheritanceAndLookup-2-Lookup.pdf
-
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week4/C019-W4S02-InheritanceAndLookup-2-Lookup.pdf
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W4/C019SD-W4-S2-v3.mp4
-
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week4/C019-W4S03-InheritanceAndLookup-3-Super.pdf
-
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W4/C019SD-W4-S2-v3.mp4http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W4/C019SD-W4-S3-v3.mp4
 
-
-Hooks
-=====
+Hooks And Template
+==================
 
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week6/C019-W6S01-DidYouUnderstandSuper.pdf
-
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W6/C019SD-W6-S1-v3.mp4
-
-http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week6/C019-W6S04-SelfSendsArePlanForReuse.pdf
-
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week6/C019-W6S04-SelfSendsArePlanForReuse.pdf
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W6/C019SD-W6-S4-v3.mp4
-
-http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week6/C019-W6S05-HookAndTemplate.pdf
-
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week6/C019-W6S05-HookAndTemplate.pdf
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W6/C019SD-W6-S5-v3.mp4
-
-
 
 
 
