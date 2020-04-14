@@ -62,45 +62,22 @@ Hooks And Template
 
 Spoc
 ====
-
-Intro to design patterns *
-
-Avoid null
-
-Null Pattern
-
-Double dispatch *
-- Exercise die
-- Double dispatch
-- Learning from a real example
-
-Use Vs Inheritance *
-
-Visitor and Composite * 
-- Expressions exercise
-- Pillar
-
-Dice New Vs. self class new
-
-Less Hardcoded References * pas ecrit
-
-Dual Interfaces *
-
-Class Methods as Extensibility Point
-
-Law of Demeter *
-
-OverloadingInJava *
-
-Private Java *
-
-Protection and Typing *
-
-
-
-
-
-
-
-
+- Intro to design patterns *
+- Avoid null / Null Pattern
+- Double dispatch *
+-- Exercise die
+-- Double dispatch
+-- Learning from a real example
+- Use Vs Inheritance *
+- Visitor and Composite * 
+-- Expressions exercise
+-- Pillar hands-on
+- Dice New Vs. self class new
+- Less Hardcoded References * pas ecrit
+- Dual Interfaces *
+- Class Methods as Extensibility Point
+- Law of Demeter *
+- OverloadingInJava *
+- Private Java *
+- Protection and Typing *
 
