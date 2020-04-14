@@ -7,6 +7,10 @@ One day preparation
 
 TDD + TTD Xtreme
 ================
+
+Why Testing
+- https://github.com/SquareBracketAssociates/OODesignMOOC/blob/master/Slides/1-ToReview/Design-WhyTesting.pillar
+
 SUnit: Unit Tests in Pharo
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week5/C019-W5S06-SUnit.pdf
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W5/C019SD-W5-S6-v3.mp4
@@ -47,21 +51,38 @@ Hooks And Template
 Spoc
 ====
 
-Intro to design patterns
+Intro to design patterns *
 
-Double dispatch
+Avoid null
+
+Null Pattern
+
+Double dispatch *
 - Exercise die
 - Double dispatch
 - Learning from a real example
 
-Use Vs Inheritance
+Use Vs Inheritance *
 
-Visitor and Composite
+Visitor and Composite * 
 - Expressions exercise
 - Pillar
 
-Dual Interfaces
+Dice New Vs. self class new
 
+Less Hardcoded References * pas ecrit
+
+Dual Interfaces *
+
+Class Methods as Extensibility Point
+
+Law of Demeter *
+
+OverloadingInJava *
+
+Private Java *
+
+Protection and Typing *
 
 
 
