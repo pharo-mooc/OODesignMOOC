@@ -1,0 +1,5 @@
+"I have already learned so much ! I have spent the last 20 years or so in software development and, following this Mooc, I realized I hadn’t really grasped the essence of object-oriented design."
+Après cette formation vous ne coderez plus pareil avec n'importe quel langage à objet.  En utilisant d'une part Pharo un langage objet pur, réflexif, dynamic et immersif, des techniques telles que Xtreme Test Driven Development force l'étu-diant à repenser les points essentiels de la programmation objet: envoi de message, this, 
+Mais ce cours ne s'arrete pas la. En immersant l'apprenant dans un monde interactif il montre comment les outils influen-cent notre productivité. Ensuite Xtreme Test Driven en codant dans un debugger montre comment tirer partie 
+Finalement nous abordons des points avancés comme une sélection (car tous ne sont pas bons!) de Design Patterns et d'heuristics de developpement pour amener l'apprenant à voir comment les éléments essentiels sont utilisés pour créer des structures conceptuelles puissantes et adaptées. 
+
