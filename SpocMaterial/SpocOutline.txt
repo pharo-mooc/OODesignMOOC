@@ -2,37 +2,53 @@ Rethinking object-oriented programming with TDD
 
 You will never program the same after following this mooc. 
 
-pour forc
+
 
 
 
 One day preparation 
 ===================
-- Syntax
+Syntax/Model
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week1/C019-W1S04-PharoModelInaNushell.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week1/C019-W1S05-PharoSyntaxInANutshell.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week1/C019-W1S06-ClassAndMethodDefinition.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S01-Messages.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S02-Messages-ForTheJavaProgrammers.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S03-Messages-Precedence.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S04-Messages-Sequence.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S06-Blocks.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S07-Loops.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S09-ParenthesisVsSquareBrackets.pdf
+ -http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S10-Yourself.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week3/C019-W3S07-Basic-ArraySetOrderedCollection.pdf
+
+Exercices: 
 - ProfStef
 - Coding the counter
-
+	http://rmod-pharo-mooc.lille.inria.fr/MOOC/Exercises/Exercises-Counter/
 
 
 =================================================================================================
 Spoc 
-=================================================================================================
-
+* requires a video (discussion avec jm hasenfraz)
 
 TDD + TTD Xtreme
 ================
 
 Why Testing
-- https://github.com/SquareBracketAssociates/OODesignMOOC/blob/master/Slides/1-ToReview/Design-WhyTesting.pillar
+- https://github.com/SquareBracketAssociates/OODesignMOOC/blob/master/Slides/1-ToReview/Design-WhyTesting.pillar (a faire)
 
 SUnit: Unit Tests in Pharo
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week5/C019-W5S06-SUnit.pdf
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W5/C019SD-W5-S6-v3.mp4
 
-Regardez la video
+Rejouer la video
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W1/C019-W1S-Videos-Redo-Counter-Traditional-FR-v4.mp4
 
+
+
 Essence of Object Programming
+=========================
 
 Sending a message
 =================
@@ -62,24 +78,37 @@ Hooks And Template
 - http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W6/C019SD-W6-S5-v3.mp4
 
 
-Spoc
-====
+Spoc Specific  Material
+===================
+* requires a video (discussion avec jm hasenfraz)
+
 - Intro to design patterns *
+
 - Avoid null / Null Pattern
+
 - Double dispatch *
 -- Exercise die
--- Double dispatch
--- Learning from a real example
+-- Double dispatch *
+-- Learning from a real example * 
+
 - Use Vs Inheritance *
 - Visitor and Composite * 
 -- Expressions exercise
 -- Pillar hands-on
+
 - Dice New Vs. self class new
+
 - Less Hardcoded References * pas ecrit
+
 - Dual Interfaces *
+
 - Class Methods as Extensibility Point
+
 - Law of Demeter *
+
 - OverloadingInJava *
+
 - Private Java *
+
 - Protection and Typing *
 
