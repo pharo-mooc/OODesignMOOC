@@ -40,7 +40,7 @@ SlowFormatingTextEditor >> format
 [[[
 TextEditor subclass: #FastFormatingTextEditor
 
-SlowFormatingTextEditor >> format
+FastFormatingTextEditor >> format
 	 self formatFastColoring: text 
 ]]]
 
