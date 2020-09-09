@@ -42,9 +42,11 @@ an heresy in OO world?
 
 ${slide:title=Private}$
 
-Be carreful, private may not be what you expect!
+- Be carreful, private may not be what you expect!
+- Usually protected better suits OO thinking
+-- protected in Java lets other classes in the same package access methods and fields
+-- different in C\#
 
-Usually protected better suits OO thinking
 
 ${slide:title=Ensuring Protection}$
 
