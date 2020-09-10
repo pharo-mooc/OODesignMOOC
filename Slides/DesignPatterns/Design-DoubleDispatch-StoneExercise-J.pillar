@@ -1,27 +1,132 @@
 {
-    "title" : "Stone Paper Scissors",
+    "title" : "Stone Paper Scissors - J version",
     "slidesid" : "From the Design Corner",
     "author" : "Stéphane Ducasse"
 }
 
-${slide:title=Stone Paper Scissors via Tests}$
+
+${slide:title=Let us start with a test}$
 
 [[[
-StonePaperScissorsTest >> testPaperIsWinning
-	self assert: (Stone new play: Paper new) = #paper
+@Test
+	public void testStoneVsStone() {
+		assertEquals(new Stone().play(new Stone()),0);
+		}
 ]]]
+
+
+${slide:title=Stone...}$
+[[[
+class Stone {
+	public int play (Stone h){
+		return ...
+	}
+}
+]]]
+
+
+${slide:title=Stone...}$
+[[[
+class Stone {
+	public int play (Stone h){
+		return h.playAgainstStone(this);
+	}
+}
+]]]
+
+
+${slide:title=Stone...}$
+[[[
+class Stone {
+	public int play (Stone h){
+		return h.playAgainstStone(this);
+	}
+	public int playAgainstStone(Stone s){
+		return ...
+	}
+}
+]]]
+
+${slide:title=Stone...}$
+[[[
+class Stone {
+	public int play (Stone h){
+		return h.playAgainstStone(this);
+	}
+	public int playAgainstStone(Stone s){
+		return 0;
+	}
+}
+]]]
+
+${slide:title=Another test...}$
+[[[
+@Test
+	public void testStoneVsPaper() {
+		assertEquals(new Stone().play(new Paper()),-1);
+		}
+]]]
+
+${slide:title=Paper...}$
+[[[
+class Paper {
+	public int playAgainstStone(Paper s){
+		return 0;
+	}
+}
+]]]
+
+${slide:title=Well this is Java, adding an interface}$
 
 [[[
-StonePaperScissorsTest >> testStoneAgainsStone
-	self assert: (Stone new play: Stone new) = #draw
+interface IHand {
+    int play (IHand h);
+    int playAgainstStone (Stone s);
+    int playAgainstScissor (Scissor s);
+    int playAgainstPaper (Paper p);
+ }
 ]]]
 
+
+
+
+
+${slide:title=Full Solution: Stone}$
 [[[
-StonePaperScissorsTest >> testStoneIsWinning
-	self assert: (Stone new play: Scissors new) = #stone
+class Stone implements IHand {
+    public int play (IHand h){
+        return h.playAgainstStone(this);
+    }
+    public int playAgainstStone(Stone s){ return 0;}
+    public int playAgainstScissor(Scissor s){ return 1;}
+    public int playAgainstPaper(Paper s){ return -1;}
+}
 ]]]
 
-...
+${slide:title=Full Solution: Scissor}$
+[[[
+class Scissor implements IHand {
+    public int play (IHand h){
+        return h.playAgainstScissor(this);
+    }
+    public int playAgainstStone(Stone s){ return -1;}
+    public int playAgainstScissor(Scissor s){ return 0;}
+    public int playAgainstPaper(Paper s){ return 1;
+    }
+}
+]]]
+
+${slide:title=Full Solution: Paper}$
+[[[
+class Paper implements IHand {
+    public int play (IHand h){
+        return h.playAgainstPaper(this);}
+    public int playAgainstStone(Stone s){ return 1;}
+    public int playAgainstScissor(Scissor s){ return -1;}
+    public int playAgainstPaper(Paper s){ return 0;
+    }
+}
+]]]
 
 ${slide:title=Let us start}$
 

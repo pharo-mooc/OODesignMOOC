@@ -4,30 +4,48 @@
     "author" : "Stéphane Ducasse"
 }
 
+${slide:title=Objectives}$
+
+- Another look at double dispatch
+- Basis for Visitor Design pattern
+- Avoid hardcoding conditionals
+
+[[[
+(Stone new play: Paper new)
+>>> #paper
+]]]
+
+
 ${slide:title=Stone Paper Scissors via Tests}$
 
 [[[
 StonePaperScissorsTest >> testPaperIsWinning
-	self assert: (Stone new play: Paper new) = #paper
+	self assert: (Stone new play: Paper new) equals: #paper
+]]]
+
+${slide:title=Stone Paper Scissors via Tests}$
+
+[[[
+StonePaperScissorsTest >> testPaperIsWinning
+	self assert: (Stone new play: Paper new) equals: #paper
 ]]]
 
 [[[
 StonePaperScissorsTest >> testStoneAgainsStone
-	self assert: (Stone new play: Stone new) = #draw
+	self assert: (Stone new play: Stone new) equals: #draw
 ]]]
 
 [[[
 StonePaperScissorsTest >> testStoneIsWinning
-	self assert: (Stone new play: Scissors new) = #stone
+	self assert: (Stone new play: Scissors new) equals: #stone
 ]]]
 
-...
 
 ${slide:title=Let us start}$
 
 [[[
 StonePaperScissorsTest >> testPaperIsWinning
-	self assert: (Stone new play: Paper new) = #paper
+	self assert: (Stone new play: Paper new) equals: #paper
 ]]]
 
 [[[
@@ -35,12 +53,28 @@ Stone >> play: anotherTool
 	^ ...
 ]]]
 
+${slide:title= Paper playAgainstStone: }$
+
+[[[
+StonePaperScissorsTest >> testPaperIsWinning
+	self assert: (Stone new play: Paper new) equals: #paper
+]]]
+
+[[[
+Stone >> play: anotherTool
+	^ anotherTool playAgainstStone: self
+]]]
+
+[[[
+Paper >> playAgainstStone: aStone
+	...
+]]]
 
 ${slide:title= Paper playAgainstStone: }$
 
 [[[
 StonePaperScissorsTest >> testPaperIsWinning
-	self assert: (Stone new play: Paper new) = #paper
+	self assert: (Stone new play: Paper new) equals: #paper
 ]]]
 
 [[[
@@ -52,6 +86,7 @@ Stone >> play: anotherTool
 Paper >> playAgainstStone: aStone
 	^ #paper
 ]]]
+
 
 
 ${slide:title=Other playAgainstStone: }$
