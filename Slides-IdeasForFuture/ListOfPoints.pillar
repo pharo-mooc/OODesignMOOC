@@ -1,0 +1,17 @@
+${title=Liste of points}$
+
+- Commands using commanders
+- Decorators explained with commanders
+- third chapter of commander
+
+What about an example of domain modeling?
+
+- Registration as class methods.
+
+- Hook Double dispatch- Example of template of MD
+- Visitor - MD?
+- Builder MD
+-- composite builders
+-- passing an argument is the door of specialised builder
+
+- Reflection at work?
