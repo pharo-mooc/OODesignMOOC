@@ -156,7 +156,7 @@ class Paper implements IHand {
 ]]]
 
 
-${slide:title=A possible solution overview}$
+${slide:title=Another possible solution}$
 
 +An overview of a possible solution using double dispatch.>file://figures/StonePaperScissors.pdf|width=80+
 
