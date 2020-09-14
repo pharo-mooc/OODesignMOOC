@@ -1,5 +1,5 @@
 {
-    "title":"Cheatsheets and Legends",
+    "title":"Legends and Cheatsheets",
     "subtitle":"",
     "author":"Stéphane Ducasse"
 }
@@ -72,18 +72,14 @@ public void testAdd(){
 
 ${slide:title=Syntactic Elements}$
 
-| | Pharo| | Java |
+| | Pharo| Java |
 | comment| "a comment"| \\\\ or /\* \*/
 | character| \$\c \$\# \$\@ |
 | string| 'lulu' 'l''idiot'| "lulu"|
 | symbol (unique string)| #mac #+ | 
 | literal array| #(12 23 36)| [ int ]
-| integer| 1, 2r101 | 
-| real | 1.5 6.03e-34,4, 2.4e7|
 | boolean| true, false | 
-| |  (instances of True and False) |
 | undefined | nil | null
-| |  (instance of UndefinedObject)|
 | point| 10@120|
 
 ${slide:title=Syntactic Elements II }$
@@ -99,11 +95,15 @@ ${slide:title=Essential Constructs}$
 
 - Messages
 [[[
-self send: anMail to: stef
+1 class
+1 + 2
+self send: aMail to: stef
 ]]]
 
 [[[
-this.sendTo(anMail,stef)
+1.getClass()
+1 + 2 
+this.sendTo(aMail,stef)
 ]]]
 
 - Lexical closure definition and execution
