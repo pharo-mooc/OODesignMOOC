@@ -1,6 +1,6 @@
 {
 	"title":"Xtreme Test Driven",
-	"slidesid":"Master Class",
+	"slidesid":"Tests",
 	"author":"S. Ducasse"
 }
 
@@ -10,7 +10,7 @@ ${slide:title=Outline}$
 - TDD on steroids
 - Live programming
 - Smart tools
-- Great developing flow
+- Absolutely gorgeous development flow
 
 + >file://figures/LogoPharo.png|width=30+
 
@@ -153,8 +153,8 @@ ${slide:title=Stepping back}$
 
 - Avoid guessing when coding
 - Much much better context 
--- inspecting that specific instance state access
--- talking to that specific object
+-- inspect that specific instance state
+-- talk to that specific object
 - Inspectable / interactable context
 - Tests are not a side effect artefacts but the driving force
 

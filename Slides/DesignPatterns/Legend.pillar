@@ -4,14 +4,38 @@
     "author":"Stéphane Ducasse"
 }
 
-${slide:title=Pharo}$
+${slide:title=Class definitions}$
 
 [[[
-TestCase subclass: #SetTest
-	instanceVariableNames: 'empty'
+Rectangle subclass: #Box
+	instanceVariableNames: 'height'
 	classVariableNames: ''
-	package: 'Reflectivity-Tests-Base'
+	package: 'MyPackage'
 ]]]
+
+[[[
+class  Box {
+	protected int height;
+	...
+	}
+]]]	
+
+${slide:title=Constructors}$
+
+[[[
+Box >> initialize
+	super initialize.
+	height := 100
+]]]
+
+[[[
+public Box() {
+        super();
+        height = 100;
+    }
+]]]
+
+${slide:title=SetUp}$
 
 [[[
 SetTestCase >> setUp
@@ -20,23 +44,24 @@ SetTestCase >> setUp
 ]]]
 
 [[[
+@Before
+public void setUp(){
+	empty = new Set();
+	}
+]]]	
+
+
+
+${slide:title=Test Methods}$
+
+[[[
 SetTestCase >> testAdd 
   empty add: 5.   "Stimulus"
   empty add: 5.
   self assert: empty size equals: 1   "Check"
 ]]]
   
-${slide:title=Java}$
-
 [[[
-class  SetTestCase {
-	Set empty;
-
-@Before
-public void setUp(){
-	empty = new Set();
-	}
-	
 @Test
 public void testAdd(){ 
   empty.add(5);  //Stimulus
@@ -44,34 +69,47 @@ public void testAdd(){
   assertEquals(empty.size(), 1);   "Check"
   }
 ]]]
-  
-
 
 ${slide:title=Syntactic Elements}$
 
-| comment| "a comment"|
+| | Pharo| | Java |
+| comment| "a comment"| \\\\ or /\* \*/
 | character| \$\c \$\# \$\@ |
-| string| 'lulu' 'l''idiot'|
-| symbol (unique string)| #mac #+ |
-| literal array| #(12 23 36)|
-| integer| 1, 2r101 |
+| string| 'lulu' 'l''idiot'| "lulu"|
+| symbol (unique string)| #mac #+ | 
+| literal array| #(12 23 36)| [ int ]
+| integer| 1, 2r101 | 
 | real | 1.5 6.03e-34,4, 2.4e7|
-| boolean| true, false |
+| boolean| true, false | 
 | |  (instances of True and False) |
-| undefined | nil |
+| undefined | nil | null
 | |  (instance of UndefinedObject)|
 | point| 10@120|
 
+${slide:title=Syntactic Elements II }$
+
+|  | Pharo| Java |
+| temp declaration | \| temp \| | int temp ; |
+| return|  ^ true | return true |
+| assignment |  x := 12 | x = 12
+| separator |  x := 12 .  | x = 12 ;
+
+
 ${slide:title=Essential Constructs}$
 
-- Temporary variable declaration: ==| var |==
-- Assignment: ==var \:= aValue==
-- Separator: ==message . message==
-- Return: ==\^ expression==
-- Llexical closures
+- Messages
+[[[
+self send: anMail to: stef
+]]]
+
+[[[
+this.sendTo(anMail,stef)
+]]]
+
+- Lexical closure definition and execution
 [[[
 [ :x | x + 2 ] value: 5
-> 7 
+>>> 7 
 ]]]
 
 
