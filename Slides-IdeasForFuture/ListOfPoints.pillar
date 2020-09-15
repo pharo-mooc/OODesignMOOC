@@ -1,25 +1,42 @@
 ${title=Liste of points}$
 
 - Tell Don't ask
+
 - about singleton as evil.
 -- show a real example 
 -- story around Transcript 
-- Settings design with Builder and layered
+
+- Settings design with Builder and layered architecture
+- killing a facade Preferences
 
 - Commands using commanders
-- Decorators explained with commanders
-- third chapter of commander
+- Comparing design class side is not good.
 
-What about an example of domain modeling?
+- Decorators explained with commanders
+	- third chapter of commander
+
+- What about an example of domain modeling?
 
 - Registration as class methods.
 
+- NullObject 
+	- SpNullPresenter
+	
 - Hook Double dispatch- Example of template of MD
+
 - Visitor - MD?
-- Builder MD
+
+- Builder MD, settings
 -- composite builders
 -- passing an argument is the door of specialised builder
 
 - Reflection at work?
 
 - Announcements?
+
+- Streams (decorator)
+
+- File stream
+
+- Platform strategy with method factory
+-- superclass factory of its subclasses.
