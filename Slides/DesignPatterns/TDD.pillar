@@ -68,12 +68,11 @@ class  SetTestCase {
 ]]]
 
 [[[
+@Test
 public void testAdd(){ 
   Set empty = new Set(); //Context
-	
   empty.add(5);  //Stimulus
   empty.add(5);
-  
   assertEquals(empty.size(), 1);   "Check"
   }
 ]]]
@@ -88,7 +87,6 @@ ${slide:title=About the flow: Write your test}$
 
 [[[
 CounterTest >> testIncrement 
-	
 	| c |
 	c := Counter new. 
 	c count: 10.
