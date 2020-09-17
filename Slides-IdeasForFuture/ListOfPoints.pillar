@@ -40,3 +40,6 @@ ${title=Liste of points}$
 
 - Platform strategy with method factory
 -- superclass factory of its subclasses.
+
+-- visitor
+	Athens roassal RSAthensRenderer is a visitor 
