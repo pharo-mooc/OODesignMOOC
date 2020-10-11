@@ -43,3 +43,9 @@ ${title=Liste of points}$
 
 -- visitor
 	Athens roassal RSAthensRenderer is a visitor 
+	
+Strategy at Work	
+	Slot showClassDefinition
+	vs ClassDefinitionPrinter	
+	
+	
