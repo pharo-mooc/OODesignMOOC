@@ -2,6 +2,8 @@ ${title=Liste of points}$
 
 - Tell Don't ask
 
+- Move Behavior close to Data?
+
 - about singleton as evil.
 -- show a real example 
 -- story around Transcript 
@@ -9,12 +11,14 @@ ${title=Liste of points}$
 - Settings design with Builder and layered architecture
 - killing a facade Preferences
 
-- Commands using commanders
+- Commands using commander20
 - Comparing design class side is not good.
 
+- Streams (decorator)
 - Decorators explained with commanders
 	- third chapter of commander
-
+	- subclassing decorator (no no)
+	
 - What about an example of domain modeling?
 
 - Registration as class methods.
@@ -23,26 +27,27 @@ ${title=Liste of points}$
 	- SpNullPresenter
 	
 - Hook Double dispatch- Example of template of MD
+- Double dispatch with classDefinitionPrinter
 
-- Visitor - MD?
+- Visitor - Microdown?
+- Visitor
+	Athens roassal RSAthensRenderer is a visitor 
 
+- Seaside Builder
+	
 - Builder MD, settings
 -- composite builders
 -- passing an argument is the door of specialised builder
+	nested builder
 
 - Reflection at work?
 
 - Announcements?
 
-- Streams (decorator)
-
 - File stream
 
 - Platform strategy with method factory
 -- superclass factory of its subclasses.
-
--- visitor
-	Athens roassal RSAthensRenderer is a visitor 
 	
 Strategy at Work	
 	Slot showClassDefinition
