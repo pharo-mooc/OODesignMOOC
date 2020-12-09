@@ -4,6 +4,11 @@ ${title=Liste of points}$
 
 - Move Behavior close to Data?
 
+
+- The obvious
+	- turning a method with many arguments into an object
+	Example the classHiearchyPrinter.
+
 - about singleton as evil.
 -- show a real example 
 -- story around Transcript 
