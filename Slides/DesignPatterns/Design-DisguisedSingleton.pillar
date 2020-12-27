@@ -21,11 +21,14 @@ MyApp >> menu
 
 ${slide:title=Case: Global Variable}$
 
-- One global variable
+- One global variable.
 - What if as an application I want to extend, slightly change icons for my application only!
-- What if I want to be able to have two icon sets and the same time to compare. 
+- What if I want to be able to have two icon sets and the same time to compare.
 
-${slide:title=Case Disguised Global Variable}$
+${slide:title=Case: Disguised Global Variable}$
+
+Since in Pharo we can extend core libraries we could think 
+this is any better.
 
 [[[
 Symbol >> asIcon
@@ -42,11 +45,11 @@ MyApp >> menu
 ${slide:title=Case: Disguised Global Variable}$
 
 - One global variable but disguished: only one place to edit but still fundamentally one big giant global.
-- Threre is only one icon table.
+- There is only one icon table.
 - MyApp cannot extend or slightly change icons for my application only!
-- What if I want to be able to have two icon sets and the same time to compare. 
+- What if I want to be able to have two icon sets and the same time to compare.
 
-${slide:title=Much better approach}$
+${slide:title=A much better approach}$
 
 [[[
 MyApp >> menu
@@ -56,23 +59,33 @@ MyApp >> menu
 ]]]
 
 [[[
-MyApp >> iconNamed: aSymbol
+MyAppSuperclass >> iconNamed: aSymbol
 ... 
-	look for my icons 
+	look for my icons may be delegate to an icon manager instance
 	potentially do a 
 	super iconNamed: #window
 ...
 ]]]
 
-${slide:title=Case: Disguised Global Variable}$
+${slide:title=Step back}$
 
-- Modular
-- Each receiver may do something
-- Still we can share the common behavior
+- Modular.
+- Each receiver may do something.
+- Each user may be configured differently.
+- Still we can share the common behavior.
+
+
 
 
 
 ${slide:title=Case: asClass}$
+Accessing programmatically a class is usually done
+
+[[[
+Smalltalk globals at: #Point
+]]]
+
+People started to want a shorter version
 
 [[[
 #Point asClass
@@ -80,16 +93,17 @@ ${slide:title=Case: asClass}$
 
 [[[
 Symbol >> asClass
-
 	^ Smalltalk globals at: self
 ]]]
 
+But there is a difference
+
 ${slide:title=Case: asClass Analysis}$
 
-- Another global entry point
-- Only one namespace! And a huge and global one. 
-- No way to dispatch
-- Why dispatching? Who needs modular solutions? 
+- Another global entry point.
+- We can only have one namespace. 
+- We cannot inject a special namespace for test for example.
+- No way to dispatch.
 
 
 ${slide:title=Case: Smalltalk tools}$
@@ -108,7 +122,7 @@ browseMethodFull
 ${slide:title=Case: Smalltalk tools Analysis}$
 
 - One global entry point
-- Everybody refers to this single point! Yes this is call monolithic thinking
+- Everybody refers to this single point! Yes this is call monolithic thinking.
 - Only one toolset possible at the same time (could be ok)
 
 ${slide:title=Case: Smalltalk tools Possible Solution}$
@@ -128,9 +142,6 @@ Browser >> openDebugger
 
 Points to consider: How to manage the fact that a tool may change
 - Browser may register to ToolEnvironment to be notified and update its instance
-
-
-
 
 
 ${slide:title=Conclusion}$
