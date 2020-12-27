@@ -6,10 +6,12 @@
 
 ${slide:title=Objects are powerful}$
 
+- Super basic to say it but ""Objects are powerful""
 - Example with ==Behavior>>printHierarchy== vs. ==ClassHierarchyPrinter==
+-- ==printHierarchy== is a method
+-- ==ClassHierarchyPrinter== is a little class
 
-
-${slide:title=Starting from  }$
+${slide:title=Functionality Example}$
 
 [[[
 Rectangle printHierarchy
@@ -22,7 +24,7 @@ ProtoObject #()
 ]]]
 
 
-${slide:title=Starting from...}$
+${slide:title=Coded as...}$
 
 [[[
 Behavior >> printHierarchy
@@ -44,7 +46,7 @@ Behavior >> printHierarchy
 	^aStream contents
 ]]]
 
-${slide:title=Starting from...}$
+${slide:title=With...}$
 [[[
 ClassDescription >> printSubclassesOn: aStream level: level 
 		"As part of the algorithm for printing a description of the receiver, print the
@@ -67,10 +69,12 @@ ClassDescription >> printSubclassesOn: aStream level: level
 
 ${slide:title=Analysis}$
 
+Pro
 - Procedural decomposition
-- State is passed arguments
+- Simple 
+- State is passed as arguments
 
-What if we need 
+Cons: What if we need 
 - to filter subclasses (==RBLintRule printHierarchy==)
 - to cut above a given superclass
 - do not want to see instance variables
@@ -79,9 +83,44 @@ We do want or cannot add state the domain.
 - Here we do not want to add state to ==Behavior== just for printing 
 
 
+${slide:title=Turning it into an object}$
+
+[[[
+ClassHierarchyPrinter new  
+	forClass: Rectangle; 
+	doNotShowState;
+	doNotShowSuperclasses
+]]]
+
+${slide:title=More complex scenario}$
+
+[[[
+ClassHierarchyPrinter new 
+	forClass: RBNode; 
+	doNotShowState;
+	doNotShowSuperclasses;
+	excludedClasses: (RBNode withAllSubclasses 
+						select: [ :each | each name beginsWith: RBPattern ]);
+	limitedToClasses: (RBNode withAllSubclasses 
+							select: [:each | each name beginsWith: RB]).
+]]]
+
+${slide:title=Looking at ClassHierarchyPrinter}$
+
+[[[
+Object << #ClassHierarchyPrinter
+	slots: { #theClass . #excludedClasses . #limitedToClasses . #stream . 
+	#level . #showSuperclasses . #showState };
+	tag: 'ForPharo';
+	package: 'Kernel-ExtraUtils'
+]]]
 
 
-
+API
+- ==doNotShowState==, ==doNotShowSuperclasses==
+- ==limitedToClasses:== to offer specific scope
+- ==excludedClasses:== to remove unwanted subclasses
+- ==cr==, ==tab==, ==nextPutAll:== to let decorations
 
 
 

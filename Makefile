@@ -21,8 +21,8 @@ PRINT_MSG = printf "$(MSG)\n"
 	
 all: initDir $(PDF_FILES)
 
-test: initDir book-result/Slides/1-ToReview/Design-LateBoundClassMethodsAtWork.pdf
-	open book-result/Slides/1-ToReview/Design-LateBoundClassMethodsAtWork.pdf
+test: initDir book-result/Slides/DesignPatterns/Design-LateBoundClassMethodsAtWork.pdf
+	open book-result/Slides/DesignPatterns/Design-LateBoundClassMethodsAtWork.pdf
 
 initDir:
 	@mkdir -p $(OUTPUTDIRECTORY)
