@@ -1,0 +1,91 @@
+{
+    "title":"Turning Procedure to Objects",
+    "subtitle":"",
+    "author":"Stéphane Ducasse"
+}
+
+${slide:title=Objects are powerful}$
+
+- Example with ==Behavior>>printHierarchy== vs. ==ClassHierarchyPrinter==
+
+
+${slide:title=Starting from  }$
+
+[[[
+Rectangle printHierarchy
+>>> 
+ProtoObject #()
+	Object #()
+
+		Rectangle #(#origin #corner)
+			CharacterBlock #(#stringIndex #text #textLine)'
+]]]
+
+
+${slide:title=Starting from...}$
+
+[[[
+Behavior >> printHierarchy
+	"Answer a description containing the names and instance variable names 
+	of all of the subclasses and superclasses of the receiver."
+
+	| aStream index |
+	index := 0.
+	aStream := (String new: 16) writeStream.
+	self allSuperclasses reverseDo: 
+		[:aClass | 
+		aStream crtab: index.
+		index := index + 1.
+		aStream nextPutAll: aClass name.
+		aStream space.
+		aStream print: aClass instVarNames].
+	aStream cr.
+	self printSubclassesOn: aStream level: index.
+	^aStream contents
+]]]
+
+${slide:title=Starting from...}$
+[[[
+ClassDescription >> printSubclassesOn: aStream level: level 
+		"As part of the algorithm for printing a description of the receiver, print the
+		subclass on the file stream, aStream, indenting level times."
+
+		| subclassNames |
+		aStream crtab: level.
+		aStream nextPutAll: self name.
+		aStream space; print: self instVarNames.
+		self == Class
+			ifTrue: 
+				[aStream crtab: level + 1; nextPutAll: '[ ... all the Metaclasses ... ]'.
+				^self].
+		subclassNames := self subclasses asSortedCollection:[:c1 :c2| c1 name <= c2 name].
+		"Print subclasses in alphabetical order"
+		subclassNames do:
+			[:subclass | subclass printSubclassesOn: aStream level: level + 1]
+
+]]]
+
+${slide:title=Analysis}$
+
+- Procedural decomposition
+- State is passed arguments
+
+What if we need 
+- to filter subclasses (==RBLintRule printHierarchy==)
+- to cut above a given superclass
+- do not want to see instance variables
+
+We do want or cannot add state the domain. 
+- Here we do not want to add state to ==Behavior== just for printing 
+
+
+
+
+
+
+
+
+${slide:title=Further thought}$
+
+- If the functionality needs to behave differently on different objects (Classes, Traits, Metaclasses...) we can use double dispatch between the objects that the printers as it is done in the ==ClassDefinitionPrinter==
+
