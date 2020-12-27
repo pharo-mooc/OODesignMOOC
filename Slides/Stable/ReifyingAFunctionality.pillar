@@ -48,7 +48,7 @@ Behavior >> printHierarchy
 
 ${slide:title=With...}$
 [[[
-ClassDescription >> printSubclassesOn: aStream level: level 
+Behavior >> printSubclassesOn: aStream level: level 
 		"As part of the algorithm for printing a description of the receiver, print the
 		subclass on the file stream, aStream, indenting level times."
 
@@ -64,12 +64,11 @@ ClassDescription >> printSubclassesOn: aStream level: level
 		"Print subclasses in alphabetical order"
 		subclassNames do:
 			[:subclass | subclass printSubclassesOn: aStream level: level + 1]
-
 ]]]
 
-${slide:title=Analysis}$
+${slide:title=Analyis}$
 
-Pro
+Situation: 
 - Procedural decomposition
 - Simple 
 - State is passed as arguments
@@ -79,11 +78,12 @@ Cons: What if we need
 - to cut above a given superclass
 - do not want to see instance variables
 
-We do want or cannot add state the domain. 
-- Here we do not want to add state to ==Behavior== just for printing 
-
+We may not want or cannot add state to the domain object. 
+- here we do not want to add state to ==Behavior== just for printing 
 
 ${slide:title=Turning it into an object}$
+
+We can simply do
 
 [[[
 ClassHierarchyPrinter new  
@@ -92,7 +92,8 @@ ClassHierarchyPrinter new
 	doNotShowSuperclasses
 ]]]
 
-${slide:title=More complex scenario}$
+
+${slide:title=A more complex scenario}$
 
 [[[
 ClassHierarchyPrinter new 
@@ -116,13 +117,20 @@ Object << #ClassHierarchyPrinter
 ]]]
 
 
+
 API
 - ==doNotShowState==, ==doNotShowSuperclasses==
 - ==limitedToClasses:== to offer specific scope
 - ==excludedClasses:== to remove unwanted subclasses
 - ==cr==, ==tab==, ==nextPutAll:== to let decorations
 
+${slide:title=Stepping back}$
 
+- We created a little object that can be configured
+- The object holds the specific state for its computation
+- It can grow with time and need
+- The functionality can be removed from ==Behavior==
+- The functionality can be niceless tested and packaged outside of ==Kernel==
 
 ${slide:title=Further thought}$
 
