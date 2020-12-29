@@ -1,0 +1,32 @@
+{
+    "title":"From Facade/Singleton to Declaration and Modularity",
+    "subtitle":"",
+    "author":"Stéphane Ducasse"
+}
+
+${slide:title=The case of Preference}$
+
+
+${slide:title=In Squeak}$
+
+
+
+
+
+${slide:title=Analysis}$
+
+- Everybody depends on Facade
+- Facade depends on everything
+- A clear lost-lost
+- Monolithic
+
+${slide:title=Looking at Flow of Control}$
+
+
+${slide:title=New Architecture}$
+
+- Layers and declaration
+
+${slide:title=In Action}$
+
+${slide:title=Looking at Flow of Control}$
