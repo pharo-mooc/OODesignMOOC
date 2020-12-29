@@ -5,14 +5,6 @@ ${title=Liste of points}$
 - Move Behavior close to Data?
 
 
-- The obvious
-	- turning a method with many arguments into an object
-	Example the classHiearchyPrinter.
-
-- about singleton as evil.
--- show a real example 
--- story around Transcript 
-
 - Settings design with Builder and layered architecture
 - killing a facade Preferences
 
@@ -58,4 +50,7 @@ Strategy at Work
 	Slot showClassDefinition
 	vs ClassDefinitionPrinter	
 	
-	
+- Setting architecture
+
+- Class are static 
+Objects support duck typing
