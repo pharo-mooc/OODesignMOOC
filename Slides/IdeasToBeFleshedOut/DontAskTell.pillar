@@ -1,0 +1,13 @@
+{
+	"title":"Don't ASk Tell",
+	"slidesid":"Tests",
+	"author":"S. Ducasse"
+}
+
+
+${slide:title=Outline}$
+
+
++ >file://figures/LogoPharo.png|width=30+
+
+${slide:title=I want examples}$

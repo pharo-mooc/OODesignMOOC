@@ -46,11 +46,6 @@ ${title=Liste of points}$
 - Platform strategy with method factory
 -- superclass factory of its subclasses.
 	
-Strategy at Work	
-	Slot showClassDefinition
-	vs ClassDefinitionPrinter	
-	
-- Setting architecture
 
 - Class are static 
 Objects support duck typing

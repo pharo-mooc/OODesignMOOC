@@ -1,0 +1,133 @@
+{
+	"title":"Don't ASk Tell",
+	"slidesid":"Tests",
+	"author":"S. Ducasse"
+}
+
+
+${slide:title=Outline}$
+
+
++ >file://figures/LogoPharo.png|width=30+
+
+
+
+
+
+${slide:title=The case of Class definition printer}$
+
+- How to support evolution of class definition
+- Supporting package, various formats, slots
+- Without parameter explositions
+
+${slide:title=Historically}$
+
+
+[[[
+ArrayedCollection variableSubclass: #Array
+	instanceVariableNames: ''''
+	classVariableNames: ''''
+	poolDictionaries: ''''
+	category: ''Collections-Sequenceable-Base'''
+]]]
+
+
+${slide:title=Old Pharo}$
+
+- Avoid spurious fields
+- Package
+[[[
+ArrayedCollection variableSubclass: #Array
+	instanceVariableNames: ''''
+	classVariableNames: ''''
+	package: ''Collections-Sequenceable-Base''
+]]]
+
+[[[
+Object subclass: #Point
+	instanceVariableNames: ''x y''
+	classVariableNames: ''''
+	package: ''Kernel-BasicObjects'''
+]]]
+
+${slide:title=Fluid class definition for Pharo 90}$
+
+- Using a fluid API
+- Only the necessary
+- Composable
+- Extensible
+
+[[[
+ArrayedCollection << #Array
+	layout: VariableLayout;
+	tag: ''Base'';
+	package: ''Collections-Sequenceable'''
+]]]
+
+[[[
+Object << #Point
+	slots: { #x . #y };
+	tag: 'BasicObjects';
+	package: 'Kernel'
+]]]
+
+${slide:title=Challenges}$
+
+- How to support such definitions
+- How to control the complexity
+-- Slots should not be displayed in Old Pharo
+- Tools should check
+
+${slide:title=First Hacked version In Pharo 70/80}$
+
+[[[
+ClassDescription >> definition
+	"Answer a String that defines the receiver."
+
+	(self needsSlotClassDefinition or: [ Slot showSlotClassDefinition ]) ifTrue: [ 
+		^ self definitionWithSlots ].
+
+	^ self definitionWithoutSlots
+]]]
+
+[[[
+Metaclass >> definition
+	"Refer to the comment in ClassDescription|definition."
+
+	(self slotsNeedFullDefinition or: [ Slot showSlotClassDefinition ]) ifTrue: [ 
+		^ self definitionWithSlots ].
+
+	^ self definitionWithoutSlots
+]]]
+
+${slide:title=First Hacked version In Pharo 70/80}$
+
+[[[
+ClyClassCreationToolMorph >> classTemplate
+
+	| template |
+	
+	template := Slot showSlotClassDefinition
+		ifTrue: [ 
+			'Object subclass: #NameOfSubclass
+	slots: {}
+	classVariables: {}
+	package: ''' ]
+		ifFalse: [ 
+			'Object subclass: #NameOfSubclass
+	instanceVariableNames: ''''
+	classVariableNames: ''''
+	package: ''' ].
+
+	^ template , self packageName , '''' 
+]]]
+
+
+${slide:title=Thorough solution}$
+
+- A kind of Strategy
+
+
+
+
+
