@@ -13,6 +13,8 @@ testBasic
 	self assert: #(((1 2) 5) (3) 4) flatten equals: #(1 2 5 3 4).
 ]]]
 
+${slide:title=With a little requirement}$
+
 [[[
 testBasicEliminatingNil
 
@@ -39,8 +41,9 @@ Object >> flatten: anObject into: result
 
 ${slide:title=Analysis}$
 
-Why do we have all these tests?
-
+- ==isCollection== is a disguised typecheck.
+- For normal objects we always do two tests: ==isCollection== and ==ifNotNil:== 
+- Can we express the same without all these tests?
 
 
 ${slide:title=A much nicer solution}$
@@ -70,6 +73,6 @@ UndefinedObject >> flattenInto: result
 
 ${slide:title=Remember}$
 
-- Sending a message is making a choice
+- Sending a message is making a choice.
 - We have three version of ==flattenInto:==.
 - Late binding at execution pick the right one. 
