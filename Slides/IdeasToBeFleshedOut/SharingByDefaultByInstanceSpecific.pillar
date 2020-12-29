@@ -1,10 +1,12 @@
-! Elements of Design - Sharing or not
+{
+    "title":"Sharing or not",
+    "subtitle":"",
+    "author":"Stéphane Ducasse"
+}
 
-- Stephane Ducasse
-- stephane.ducasse@inria.fr
-- *>http://stephane.ducasse.free.fr/*
+${slide:title=Case Study: Scanner}$
 
-!! Case Study: Scanner
+
 [[[
 Scanner new
 	scanTokens: 'identifier keyword: 8r31
@@ -14,9 +16,9 @@ Scanner new
 #key:word: #'.')
 ]]]
 
-!! A Case Study: The Scanner class
 
-- Class Definition
+${slide:title=Case Study: Scanner class}$
+
 [[[
 Object subclass: #Scanner
 	instanceVariableNames: 'source mark prevEnd
@@ -26,7 +28,8 @@ currentComment buffer typeTable'
 	package: 'System-Compiler-Public Access'
 ]]]
 
-!! Scanner enigma
+
+${slide:title=Case Study: Scanner enigma}$
 
 - Why having an instance variable and a classVariable
 denoting the same object (the scanner table)?
@@ -37,11 +40,11 @@ denoting the same object (the scanner table)?
 
 - All methods only accessed the instance variable
 
-!! Clever Sharing
+${slide:title=Clever Sharing}$
 
 +>file://figures/CleverSharing.png+
 
-!! A Case Study: Scanner (II)
+${slide:title=A Case Study: Scanner (II)}$
 [[[
 Scanner class>>initialize
 	"Scanner initialize"
@@ -60,7 +63,7 @@ newTable at: $| asInteger put: #verticalBar.
 TypeTable := newTable
 ]]]
 
-!! A Case Study: Scanner (III)
+${slide:title=A Case Study: Scanner (III)}$
 
 - Instances only access the type table via the instance variable that points to the table that has been initialized once.
 [[[

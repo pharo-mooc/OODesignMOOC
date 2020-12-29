@@ -4,12 +4,12 @@
     "author":"Stéphane Ducasse"
 }
 
-${slide:title=The case of Preference}$
+${slide:title=The case of Preferences}$
 
 
 ${slide:title=In Squeak}$
 
-
+- add picture here
 
 
 
@@ -25,8 +25,18 @@ ${slide:title=Looking at Flow of Control}$
 
 ${slide:title=New Architecture}$
 
+- add picture here
 - Layers and declaration
 
 ${slide:title=In Action}$
 
 ${slide:title=Looking at Flow of Control}$
+
+${slide:title=Analysis}$
+
+- Layered: 
+-- the domain does not depend on the setting 
+-- Settings do not depend on browser
+- Modular
+
+
