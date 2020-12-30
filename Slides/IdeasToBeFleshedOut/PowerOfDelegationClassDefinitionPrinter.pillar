@@ -123,11 +123,159 @@ ClyClassCreationToolMorph >> classTemplate
 ]]]
 
 
-${slide:title=Thorough solution}$
+${slide:title=Solution: Delegating to a ClassDefinition Printer}$
 
 - A kind of Strategy
+- A hierarchy of printers
+
+[[[
+ClassDefinitionPrinter ( forClass )
+	FluidClassDefinitionPrinter
+	LegacyClassDefinitionPrinter
+	OldPharoClassDefinitionPrinter
+]]]
+
+Add a diagram
+
+${slide:title=From Class}$
+
+
+${slide:title=Fluid}$
+
+[[[
+ClassDescription >> definitionString
+	"Return the string of the class definition, each of my subclass may tell the printer how to printer it. 
+	A kind of double dispatch since we have multiple printers and multiple entities to be printed."
+
+	^ self definitionPrinter definitionString
+]]]
+[[[	
+ClassDescription >> definitionPrinter
+	"Return a configurated printer associated with the current class definition format."
+
+	^ ClassDefinitionPrinter for: self
+]]]
+
+
+${slide:title=Fluid printing a class}$
+
+[[[
+FluidClassDefinitionPrinter >> classDefinitionString
+
+	^ String streamContents: [ :s | 
+		  forClass superclass
+			  ifNotNil: [ s nextPutAll: forClass superclass name ]
+			  ifNil: [ s nextPutAll: 'nil' ].
+			
+		self msgAndClassNameOn: s.
+		forClass classLayout isFixedLayout 
+				ifFalse: [ self layoutOn: s ].
+
+		self traitsOn: s.
+			
+		forClass slots ifNotEmpty: [ self slotsOn: s ].
+		forClass classVariables ifNotEmpty: [ self sharedVariablesOn: s ].
+		forClass sharedPools ifNotEmpty: [ self sharedPoolsOn: s ].
+
+		self tagOn: s.
+		self packageOn: s ]
+]]]
+
+${slide:title=Fluid printing a metaclass}$
+
+[[[
+FluidClassDefinitionPrinter >> metaclassDefinitionString 
+
+	^ String streamContents: [ :strm |
+		forClass superclass 
+			ifNotNil: [ strm nextPutAll: forClass name ]
+			ifNil: [ strm nextPutAll: 'ProtoObject ' ].
+		self lastTraitsOn: strm.
+		forClass slots ifNotEmpty: [ self lastSlotsOn: strm ] ]
+]]]
 
 
 
 
+${slide:title=Tool logic}$
+
+[[[
+ClassCreationToolMorph >> classTemplate
+
+	^ ClassDefinitionPrinter new 
+		compactClassDefinitionTemplateInPackage: self packageName
+]]]
+
+${slide:title=Analysis}$
+
+- Modular One class = one printer
+- One printer supports multiple related features (expansion, template, class printing)
+- Support reuse within the hierarchy
+- Defaulting within printers ( To print complex slots using legacy, if necessary legacy printer
+redirects to fluid printer )
+
+${slide:title=How to support?}$
+
+How to support printing different objects on different printers
+- Traits, Classes, Metaclasses
+- Legacy, OldPharo and Fluid
+
+
+${slide:title=Double Dispatch}$
+
+[[[
+ClassDefinitionPrinter >> definitionString
+	"The method is part of the double dispatch. It is an extra starting point. 
+	Each entity will select the right definition and call me back.
+	Normally this method is not used because the main point is the class...."
+	
+	^ forClass definitionStringFor: self
+]]]
+
+[[[
+Class >> definitionStringFor: aConfiguredPrinter
+
+	^ aConfiguredPrinter classDefinitionString 
+]]]
+
+[[[
+Class >> definitionStringFor: aConfiguredPrinter
+
+	^ aConfiguredPrinter classDefinitionString 
+]]]
+
+[[[
+Class >> definitionStringFor: aConfiguredPrinter
+
+	^ aConfiguredPrinter metaclassDefinitionString 
+]]]
+
+
+${slide:title=Encapsulate printer selection}$
+
+- Limit reference to specific printers
+- Reference the superclass
+
+[[[
+ClassDefinitionPrinter >> new
+
+	^ self showFluidClassDefinition
+		ifTrue: [ self fluid ]
+		ifFalse: [ self oldPharo ]
+]]]
+
+Possibility to refer to legacy definition
+[[[
+ClassDescription >> oldDefinition
+
+	^ ClassDefinitionPrinter legacy
+		for: self;
+		definitionString
+]]]
+
+
+${slide:title=Conclusion}$
+
+- Dispatch over objects
+- Avoid complex conditional cases
 
