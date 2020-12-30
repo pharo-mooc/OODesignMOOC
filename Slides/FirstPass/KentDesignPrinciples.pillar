@@ -28,12 +28,12 @@ ${slide:title=The 4 Design Principles}$
 
 ${slide:title=I. Passes the Tests}$
 
-- your code must work as intended
-- the tests make sure that's always true
+- Your code must work as intended
+- Tests make sure that's always true
 
 ${slide:title=II. Reveals Intention}$
 
-- the code must be easy to understand
+- Code must be easy to understand
 - always remember that:
 -- you spend most of your time reading/browsing code
 -- if you can't understand, you can't modify
@@ -41,14 +41,14 @@ ${slide:title=II. Reveals Intention}$
 ${slide:title=III. No duplication (''aka.'' D.R.Y.)}$
 
 - ""D""on't ""R""epeat ""Y""ourself
-- say things "Once and only once"
-- create abstractions
+- Say things "Once and only once"
+- Create abstractions
 
 ${slide:title=IV. Fewest Elements (''aka.'' no over-engineering)}$
 
-- don't design future requirements
-- you don't know what you will need tomorrow, don't design for it today
-- this only makes code harder to change
+- Don't design future requirements
+- You don't know what you will need tomorrow, don't design for it today
+- This only makes code harder to change
 
 ${slide:title=The 4 Design Principles}$
 
@@ -56,7 +56,3 @@ ${slide:title=The 4 Design Principles}$
 #Reveals intention
 #No duplication
 #Fewest elements
-
-% Local Variables:
-% compile-command: "cd ../.. && ./compile.sh --to=Beamer43 Slides/ExtraSlides/4DesignPrinciples.pillar"
-% End:
