@@ -98,7 +98,7 @@ InputSensor >> duplicateControlAndAltKeysChanged
 
 ${slide:title=Graphically}$
 
-+.>file://figures/Settings-PreferenceMonolithicFlow.pdf|width=60+
++.>file://figures/Settings-PreferenceMonolithicFlow.pdf|width=80+
 
 
 ${slide:title=Analysis}$
@@ -110,41 +110,84 @@ ${slide:title=Analysis}$
 - Monolithic
 
 
+${slide:title=A New Architecture}$
+
++.>file://figures/Settings-PreferenceModularFlow.pdf|width=80+
+
+
+${slide:title=A New Architecture}$
+
+- A class ""defines state / methods"" that implement its customization points
+
+- The class ""declares"" its settings (via description)
+
+- The settings browser collects the setting declaration and builds a UI for the user
+
+- The settings browser ""configure"" objects using settings description
+
+${slide:title=In Action: A class implements its customization points}$
+
+[[[
+JobProgressBarMorph >> isInterruptable 
+	^ self class isInterruptable
+
+JobProgressBarMorph class >> isInterruptable
+	^ IsInterruptable ifNil: [ IsInterruptable := true ]
+]]]
+
+
+${slide:title=In Action: Settings declaration using a Builder}$
+
+[[[
+JobProgressBarMorph class >> interruptionSetting: aBuilder 
+	<systemsettings>
+	(aBuilder setting: #isInterruptable) 
+		label: 'Make progress bar interuptable';
+		default: true;
+		description: 'When enabled, add a button to progress bars to 
+		interupt the action when clicked.';
+		parent: #progress; 
+		target: self;
+		order: 1
+]]]
+
+- Using a builder as parameter we avoiddirect references to the classes of Settings.
+- Can be optionally packaged in another package if needed. 
+
+
+${slide:title=In Action: Settings Browser}$
+
++.>file://figures/Settings-Settings-Job.png|width=80+
+
+- Use the settings to ""configure"" the objects.
+
 ${slide:title=Looking at Flow of Control}$
 
-+.>file://figures/modularflow.png|width=60+
++.>file://figures/Settings-PreferenceModularFlow.pdf|width=80+
 
-
-
-${slide:title=New Architecture}$
-
-
-
-${slide:title=In Action}$
-
-
-
-
-
-${slide:title=Looking at Flow of Control}$
 
 ${slide:title=Analysis}$
 
-- Layered: 
--- the domain does not depend on the setting 
--- Settings do not depend on browser
+- Layered
+-- the domain does not depend on the setting framework
+-- Settings do not depend on Browser
+
 - Modular
 
 
-${slide:title=About Parametrizable}$
+${slide:title=About parametrizable}$
 
 - An object should be designed to be parametrized
 - The logic flow should be internal
-- The object logic should not be linked to a preference object
-- The object parametrization can be set from an external object
+- The object logic should not be tight to a preference object
+- The object parametrization can be set from an external object (like the Setting browser)
 
 
+${slide:title=Conclusion}$
 
+- Architecture should not promote global variable usage
+- Avoid Singleton/Facade, these are anti-patterns
+- Our theory is that Facade is only "useful" for Compiler :)
 
 
 
