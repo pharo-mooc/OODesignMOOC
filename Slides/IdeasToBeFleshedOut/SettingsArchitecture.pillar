@@ -157,7 +157,7 @@ JobProgressBarMorph class >> interruptionSetting: aBuilder
 
 ${slide:title=In Action: Settings Browser}$
 
-+.>file://figures/Settings-Settings-Job.png|width=80+
++.>file://figures/Settings-Job.png|width=80+
 
 - Use the settings to ""configure"" the objects.
 

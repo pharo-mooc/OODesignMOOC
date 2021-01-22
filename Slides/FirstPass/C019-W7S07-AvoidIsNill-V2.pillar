@@ -38,7 +38,7 @@ Branching (with ==if==) based on the type of an object is bad:
 
 Send messages instead
 
-+.>file://figures/antifIfCampaign.png|width=60+
+%+.>file://figures/antifIfCampaign.png|width=60+
 
 ${slide:title=Better Approach: Define Polymorphic Method}$
 
@@ -167,4 +167,4 @@ ${slide:title=Conclusion}$
 - Initialize your variables
 - If you can, create objects representing default behavior
 
-+.>file://figures/antifIfCampaign.png|width=60+
+%+.>file://figures/antifIfCampaign.png|width=60+
