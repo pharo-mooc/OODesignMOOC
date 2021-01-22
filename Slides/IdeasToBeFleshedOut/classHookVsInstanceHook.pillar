@@ -1,0 +1,79 @@
+{
+    "title":"About hooks",
+    "subtitle":"",
+    "author":"Stéphane Ducasse"
+}
+
+${slide:title=Introducing a hook}$
+
+[[[
+CHInterpreter >> visit...
+
+	scope := CHClassScope new xxx
+	...
+	scope
+]]]
+
+
+
+${slide:title=Extract a class}$
+
+[[[
+CHInterpreter >> visit...
+
+	scope := self classScopeClass new xxx
+	...
+	scope
+]]]
+
+
+[[[
+CHInterpreter >> classScopeClass
+
+	^ CHClassScope
+]]]
+
+
+${slide:title=A subclass can push a different class}$
+
+[[[
+CHInterpreter2 >> classScopeClass
+
+	^ MyClassScope
+]]]
+
+Ok it works
+
+${slide:title=Analysis }$
+
+- What if we have a more complex instantiation?
+- And we want to encapsulate it and let the extender changes it.
+- ==self classScopeClass new xxx== is not at the good granularity
+
+[[[
+CHInterpreter >> visit...
+
+	scope := self classScopeClass new xxx
+	...
+	scope
+]]]
+
+
+${slide:title=Instance creation }$
+
+
+[[[
+CHInterpreter >> visit...
+
+	scope := self newClassScope.
+	...
+	scope
+]]]
+
+[[[
+CHInterpreter >> newClassScope...
+
+	scope := self newClassScope xxx
+
+]]]
+
