@@ -1,6 +1,5 @@
 {
-	"title":"Don't ASk Tell",
-	"slidesid":"Tests",
+	"title":"Delegating behavior at Work",
 	"author":"S. Ducasse"
 }
 
@@ -8,9 +7,8 @@
 ${slide:title=Outline}$
 
 
+
 + >file://figures/LogoPharo.png|width=30+
-
-
 
 
 
@@ -20,7 +18,7 @@ ${slide:title=The case of Class definition printer}$
 - Supporting package, various formats, slots
 - Without parameter explositions
 
-${slide:title=Historically}$
+${slide:title=Historically: a Class Definition}$
 
 
 [[[
@@ -32,10 +30,11 @@ ArrayedCollection variableSubclass: #Array
 ]]]
 
 
-${slide:title=Old Pharo}$
+${slide:title=Pharo up to Pharo 90}$
 
-- Avoid spurious fields
+- Avoid spurious fields, but still
 - Package
+
 [[[
 ArrayedCollection variableSubclass: #Array
 	instanceVariableNames: ''''
@@ -50,12 +49,16 @@ Object subclass: #Point
 	package: ''Kernel-BasicObjects'''
 ]]]
 
-${slide:title=Fluid class definition for Pharo 90}$
+${slide:title=Fluid class definition in Pharo 90}$
 
 - Using a fluid API
 - Only the necessary
 - Composable
 - Extensible
+- Supporting complex slots (first class instance variables)
+
+
+${slide:title=Fluid class definition in Pharo 90}$
 
 [[[
 ArrayedCollection << #Array
@@ -70,6 +73,25 @@ Object << #Point
 	tag: 'BasicObjects';
 	package: 'Kernel'
 ]]]
+
+${slide:title=The Case of Complex Slots}$
+
+[[[
+SpAbstractWidgetPresenter << #SpDiffPresenter
+	slots: {
+			#showOptions => SpObservableSlot .
+			#showOnlyDestination => SpObservableSlot .
+			#showOnlySource => SpObservableSlot .
+			#contextClass => SpObservableSlot .
+			#leftLabel => SpObservableSlot .
+			#leftText => SpObservableSlot .
+			#rightLabel => SpObservableSlot .
+			#rightText => SpObservableSlot };
+		tag: 'Widgets';
+		package: 'Spec2-Core'
+]]]
+
+- Previous Pharo class definition do not support well slots.
 
 ${slide:title=Challenges}$
 
@@ -100,7 +122,7 @@ Metaclass >> definition
 	^ self definitionWithoutSlots
 ]]]
 
-${slide:title=First Hacked version In Pharo 70/80}$
+${slide:title=Hacked in Tools Too}$
 
 [[[
 ClyClassCreationToolMorph >> classTemplate
@@ -135,12 +157,9 @@ ClassDefinitionPrinter ( forClass )
 	OldPharoClassDefinitionPrinter
 ]]]
 
-Add a diagram
+NEED Add a diagram
 
 ${slide:title=From Class}$
-
-
-${slide:title=Fluid}$
 
 [[[
 ClassDescription >> definitionString
