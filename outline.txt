@@ -1,0 +1,144 @@
+Test
+- Why 
+- TDD
+- XTDD
+
+- Testing in isolation
+
+
+Introduction Mooc Concepts OOP
+
+Intro OOP 
+
+Dispatch Dynamic binding Polymorphism sending message is making a choice
+Case study: Polymorphism
+
+Encapsulation
+- monoclass ^ #black
+- monoclass: 
+      #black
+
+Inheritance
+
+Two interfaces of OOP
+
+Case Points in Java vs. Pharo
+
+Case DatePrinter
+
+Use vs Inheritance
+
+- Class are static vs. Instances
+Cmd 
+
+Design Principles
+
+Don't ask Tell
+- message as order
+- message as query
+
+Delegation
+Case : Class printer
+
+SubclassVsSubtyping
+
+AntiIf
+- Double dispatch
+- Avoid nil 
+- Table dispatch 
+
+Hollywood Principle / Inversion of Control
+Case study: Settings
+
+LOD
+
+Reify / Representing Domain / Creating an object
+- Case study Sokoban example
+- Not only concrete objects but abstractions!
+
+Parametrisation
+- Control Global 
+- Case: using Transcript 
+- par instance 
+
+Advanced Points
+
+Late bound class
+case study
+
+Defensive Programming vs. 
+Polymorphic object
+
+Sharing 
+hiding structure
+
+Transform conditional to registration
+Illustration Hollywood
+
+Class vs. Instance Hooks
+
+Refactoring strategies
+
+Design Patterns
+
+- Introduction
+
+- Visitor 
+
+- Composite
+
+- Flyweight 
+Symbol
+
+- Class side comme Factory
+width: factory method
+
+- Platform? Client hidden details
+Driver glorp
+Facade
+
+- Builder 
+- Case Microdown
+- Case Seaside
+- Settings
+
+- NullObject
+
+- Decorator
+- Stream
+
+- Template methods
+
+- Strategy
+
+- Commander
+
+Anti Patterns
+Singleton
+Test singleton
+
+Facade 
+
+
+Exercises
+
+Uno checker
+Sokoban
+PacMan
+Analyser Pharo
+MicroDown visitor
+ParserJSON
+
+
+
+
+
+
+
+
+
+
+
+
+
+

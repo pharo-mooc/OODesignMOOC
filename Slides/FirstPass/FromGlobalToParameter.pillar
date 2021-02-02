@@ -63,7 +63,7 @@ ${slide:title=Get the butter and the money}$
 Make sure that you can plug another stream to your stream.
 
 [[[
-MicAbstractBlock >> logStream:  aStream 
+MicAbstractBlock >> logStream: aStream 
 	logStream := aStream
 ]]]
 
@@ -78,6 +78,5 @@ ${slide:title=Avoid Globals}$
 - Avoid Global 
 - They make your code less modular, less testable
 - Related to Singleton and Disguised Singleton Lecture
-
 
 
