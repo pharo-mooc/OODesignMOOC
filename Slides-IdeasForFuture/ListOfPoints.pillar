@@ -1,3 +1,9 @@
+- Move behavior close to data
+- Registration....
+- 
+
+
+
 ${title=Liste of points}$
 
 - Tell Don't ask
@@ -45,6 +51,8 @@ ${title=Liste of points}$
 
 - Platform strategy with method factory
 -- superclass factory of its subclasses.
+	
+	
 	
 
 - Class are static 
