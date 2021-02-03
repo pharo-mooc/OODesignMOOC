@@ -17,14 +17,14 @@ ${slide:title=Automated Tests are your Life Insurance}$
 
 - Our brain is to small to remember everything
 - Our brain focuses on the last action
-- You write it once and you run it million times
+- You write a test once and you execute it million times
 - Programming is modeling the world and the world is changing
 
 
 ${slide:title=Automated Tests}$
 
 - Tests do not avoid breaking your system
-- But they show what you broke
+- But they show what you broke!
 
 ${slide:title=Automated Tests Let Software Evolve}$
 
@@ -41,15 +41,15 @@ In an automated test, we
 - Check the results: Check that the set contains only one element
 
 
-${slide:title=Set TestCase in Pharo}$
+${slide:title=Set Test in Pharo}$
 
 [[[
-TestCase subclass: #SetTestCase
+TestCase subclass: #SetTest
     ...
 ]]]
 
 [[[
-SetTestCase >> testAdd 
+SetTest >> testAdd 
   | empty |
   empty := Set new.   "Context"
   empty add: 5.   "Stimulus"
@@ -62,7 +62,7 @@ SetTestCase run: #testAdd
 ${slide:title=Set TestCase in Java}$
 
 [[[
-class  SetTestCase {
+class  SetTest {
     ...
 	}
 ]]]
@@ -109,13 +109,13 @@ public void testIncrement(){
 ${slide:title=About the flow: Run your test}$
 
 - It is red! 
-- Else you increase your test number
+- Else you increase the number of your tests
 - When you are lucky, use XTDD and enjoy coding in the debugger
 
 
 ${slide:title=About the flow: Make your test pass}$
 
-- Work until your test get green! 
+- Work until your test gets green! 
 
 ${slide:title=About the flow: Rerun all the tests}$
 
@@ -129,17 +129,6 @@ ${slide:title=About the flow: Rerun all the tests}$
 ${slide:title=Why writing test first}$
 
 - You specify what you want to get
-- You get a clear context
+- You get a ""clear"" context
 - You can debug on the spot
-
-
-${slide:title=If we have to keep one practice: Tests}$
-
-- You specify what you want to get
-- You get a clear context
-- You can debug on the spot
-
-
-
-
 
