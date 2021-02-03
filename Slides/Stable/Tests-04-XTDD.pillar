@@ -16,9 +16,9 @@ ${slide:title=Outline}$
 
 ${slide:title=Principle}$
 
-- Do not break the flow
+- Do ""not break"" the flow
 - Write a test
-- When it breaks, compile method on the fly in the debugger
+- When it breaks, define the method ""on the fly in the debugger""
 - Resume and continue until test is green
 
 ${slide:title=Studying an example}$
