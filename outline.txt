@@ -1,38 +1,36 @@
 Test
-- Why 
-- TDD
-- XTDD
+	- Why 
+	- TDD
+	- XTDD
 
-- Testing in isolation
+- Testing in isolation (TBD)
 
 
 Introduction Mooc Concepts OOP
+==========================
+	Intro OOP 
 
-Intro OOP 
+	Dispatch Dynamic binding Polymorphism sending message is making a choice
+	Case study: Polymorphism
 
-Dispatch Dynamic binding Polymorphism sending message is making a choice
-Case study: Polymorphism
-
-Encapsulation
-- monoclass ^ #black
-- monoclass: 
-      #black
+	Encapsulation
+	- monoclass ^ #black
+	- monoclass: 
+    	  	#black
 
 Inheritance
 
 Two interfaces of OOP
-
 Case Points in Java vs. Pharo
-
 Case DatePrinter
 
 Use vs Inheritance
 
 - Class are static vs. Instances
-Cmd 
+Case study: Commander bad idea 
 
 Design Principles
-
+===============
 Don't ask Tell
 - message as order
 - message as query
@@ -62,7 +60,7 @@ Parametrisation
 - par instance 
 
 Advanced Points
-
+=============
 Late bound class
 case study
 
@@ -79,8 +77,9 @@ Class vs. Instance Hooks
 
 Refactoring strategies
 
-Design Patterns
 
+Design Patterns
+==============
 - Introduction
 
 - Visitor 
