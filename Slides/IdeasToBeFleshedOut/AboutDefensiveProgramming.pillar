@@ -1,0 +1,64 @@
+{
+    "title":"About defensive programming",
+    "subtitle":""
+}
+
+${slide:title=Defensive Example}$
+
+[[[
+BlLayoutCommonConstraints >> padding: aBlPadding
+	"Change element's margin to a BlMargin. aBlPadding must not be nil."
+	self
+		assert: [ aBlPadding isNotNil ]
+		description: [ 'Padding must not be nil' ].
+	
+	padding := aBlPadding
+]]]
+
+
+${slide:title=Drawbacks of the approach}$
+
+- Runtime cost
+- Assertions are optional so we should not consider that they are executed.
+
+
+${slide:title=Defensive Example 2}$
+
+[[[
+BlLayoutCommonConstraints >> padding: aBlPadding
+	"Change element's margin to a BlMargin. aBlPadding must not be nil."
+	
+	
+	aBlPadding isNil
+		ifTrue: [ 'Padding must not be nil' ].
+	
+	padding := aBlPadding
+]]]
+
+- What is the goal here? that padding does not break
+- But I can still write ==x padding: aJunkObject==
+- So the test is not good and worth
+
+${slide:title=Defensive Example 2}$
+
+[[[
+BlLayoutCommonConstraints >> padding: aBlPadding
+	"Change element's margin to a BlMargin. aBlPadding must not be nil."
+	
+	padding := aBlPadding
+]]]
+
+- 
+
+
+
+${slide:title=Conclusion}$
+
+- Architecture should not promote global variable usage
+- Avoid Singleton/Facade, these are anti-patterns
+- Our theory is that Facade is only "useful" for Compiler :)
+
+
+
+
+

@@ -18,13 +18,13 @@ Introduction Mooc Concepts OOP
 	- monoclass: 
     	  	#black
 
-Inheritance
+	Inheritance
 
-Two interfaces of OOP
-Case Points in Java vs. Pharo
-Case DatePrinter
+	Two interfaces of OOP
+	Case Points in Java vs. Pharo
+	Case DatePrinter
 
-Use vs Inheritance
+	Use vs Inheritance
 
 - Class are static vs. Instances
 Case study: Commander bad idea 
@@ -120,6 +120,7 @@ Facade
 
 
 Exercises
+=========
 
 Uno checker
 Sokoban
