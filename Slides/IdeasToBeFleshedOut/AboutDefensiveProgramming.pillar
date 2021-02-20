@@ -127,6 +127,28 @@ paint: aPaint
 - This is a bad use of assertion.
 - Bug can be introduced when the assertion is not executed.
 
+${slide:title=About assertion transparence}$
+
+[[[
+stepBy: anInteger
+
+	self 
+		assert: [ anInteger isZero not ] 
+		description: [ 'Step lenght must be non-zero value' ].
+	stepLength := anInteger.
+]]]
+- Here the fact that an assertion is evaluated or not can change the fact that paint get its value changed twice.
+- This defeats the purpose of assertions. 
+- Because assertions are optional.
+
+
+[[[
+stepBy: anInteger
+
+	 anInteger isZero 
+	 	ifTrue: [ self error: 'Step lenght must be non-zero value' ].
+	stepLength := anInteger.
+]]]
 
 ${slide:title=A final example}$
 
