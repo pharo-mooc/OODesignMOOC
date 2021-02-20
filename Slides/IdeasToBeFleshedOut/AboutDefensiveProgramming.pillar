@@ -128,6 +128,24 @@ paint: aPaint
 - Bug can be introduced when the assertion is not executed.
 
 
+${slide:title=A final example}$
+
+
+[[[
+text
+	"Return the text I am assigned to"
+
+	self
+		assert: [ text isNotNil ]
+		description: [ 'Text must never be nil' ].
+
+	^ text
+]]]
+
+- If the text must not be nil this is not when accessible that action should be done. 
+- Initialization and setters should be used for ensuring it. 
+- Hijacking accessor this way is not really good.
+
 ${slide:title=Conclusion}$
 
 - Architecture should not promote global variable usage
