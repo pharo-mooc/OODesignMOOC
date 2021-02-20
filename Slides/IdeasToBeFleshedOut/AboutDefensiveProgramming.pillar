@@ -91,6 +91,42 @@ BlEvent >> source
 - We could catch the error if needed.
 
 
+${slide:title=Assertion.... }$
+
+[[[
+text
+	self
+		assert: [ text isNotNil ]
+		description: [ 'Text must never be nil' ].
+
+	^ text
+]]]
+
+- Better make sure that it is not possible to get a nil text.
+- Initialize well your object
+
+[[[
+text
+	^ text
+]]]
+
+
+${slide:title=About assertion transparence}$
+
+A program should behave the same with assertion or not
+[[[
+paint: aPaint
+	self
+		assert: [ paint isNil ]
+		description: [ 'I am immutable and can not be modified' ].
+
+	paint := aPaint
+]]]
+
+- Here the fact that an assertion is evaluated or not can change the fact that paint get its value changed twice.
+- This is a bad use of assertion.
+- Bug can be introduced when the assertion is not executed.
+
 
 ${slide:title=Conclusion}$
 
