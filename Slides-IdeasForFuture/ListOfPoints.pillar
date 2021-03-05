@@ -3,6 +3,17 @@
 - 
 
 
+About the null eating. 
+
+Normal navigation syntax can be used in most cases without regarding NULLs, as the underlying messages, when sent to NULL, is discarded without any ill effects.
+[[[
+NSString *name = article.author[0].name;
+]]]
+
+
+
+
+
 
 ${title=Liste of points}$
 
