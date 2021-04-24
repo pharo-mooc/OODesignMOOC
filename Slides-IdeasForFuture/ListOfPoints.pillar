@@ -17,6 +17,12 @@ NSString *name = article.author[0].name;
 
 ${title=Liste of points}$
 
+
+- Sharable
+- Flyweigth
+
+- Sokoban Direction
+
 - Tell Don't ask
 
 - Move Behavior close to Data?
