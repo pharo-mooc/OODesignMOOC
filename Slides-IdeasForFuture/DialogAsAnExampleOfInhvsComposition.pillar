@@ -1,0 +1,35 @@
+{
+	"title":"Inheritance vs. composition",
+	"subtitle":"",
+	"author":"Stéphane Ducasse",
+	"complement":"http://stephane.ducasse.free.fr/ \\\\ stephane.ducasse@inria.fr"
+}
+
+
+
+```
+(SgaConfirmDialog newApplication: self application)
+     label: 'You sure?';
+    openModalWithSpec
+```
+
+or you can incrementally add the non-default parts as you need:
+
+```
+(SgaConfirmDialog newApplication: self application)
+     title: 'Confirm';
+     label: 'You sure?';
+     acceptLabel: 'Yes, I am sure';
+     cancelLabel: 'Nah';
+    openModalWithSpec
+```
+
+Also I added some convenience methods to SgaApplication (newConfirm, newRequest, etc.), so you can do
+
+```
+self  application newConfirm ... etc.
+```
+
+As you can see... nothing marvelous or Bizarre :)
+
+you can check some code here: https://github.com/estebanlm/stargate/blob/master/src/Stargate 
