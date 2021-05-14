@@ -1,0 +1,14 @@
+About 
+
+
+printOn: aStream 
+
+	super printOn: aStream. 
+	aStream nextPutAll: foo asString
+
+vs
+
+printOn: aStream 
+
+	super printOn: aStream. 
+	foo printOn: aStream
