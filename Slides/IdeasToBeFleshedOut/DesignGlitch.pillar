@@ -1,3 +1,5 @@
+About explicit type marker and TypeObject
+
 Non explicit type check
 
 
@@ -51,3 +53,13 @@ from: aStartInteger to: anEndInteger withSubstring: aString
 		substring: aString; 
 		children: Array empty; 
 		cleanSubstring; yourself.	
+
+
+TypeObject
+
+
+Video rental 
+- that scratch video DVD vs the IMDB database description
+
+Plant collector
+- My plant size flowering vs. its description
