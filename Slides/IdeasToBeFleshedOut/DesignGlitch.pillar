@@ -1,65 +1,73 @@
-About explicit type marker and TypeObject
-
-Non explicit type check
+Reifying and delagating behavior
 
 
-Kind of MicInliner
+PRInputDocument >> filesToBuildOn: aProject
 
-- Never change
-- Does not need a setter
-- Does not need a state
-- Is not needed
+	^ files collect: [ :file | 
+			PRInputDocument new
+				project: aProject;
+				file: (aProject baseDirectory resolve: file);
+				yourself ]
 
-Explicit type check 
-
-MicElement << #MicInlineBlock
-	slots: { #start . #end . #kind . #children . #substring };
-	tag: 'ModelInline';
-	package: 'Microdown'
+PRInputDocument >>parser
 	
-kind: aKind
-	kind := aKind
+	file extension = 'pillar'
+		ifTrue: [ ^ PRDocument parser ].
+	self error: 'No parser for document extension: ', file extension
 	
-kind
-	^ kind
-
-from: aStartInteger to: anEndInteger withKind: aKind withSubstring: aString
-	^ self new 
-		start: aStartInteger; 
-		end: anEndInteger; 
-		kind: aKind; 
-		substring: aString; 
-		children: Array empty; 
-		cleanSubstring; yourself.	
-
-
-
-MicElement << #MicInlineBlock
-	slots: { #start . #end . #children . #substring };
-	tag: 'ModelInline';
-	package: 'Microdown'
 	
+PRAbstractOutputDocument >> buildOn: aPRProject 
+	
+	| parsedDocument transformedDocument writtenFile |
+	parsedDocument := self parseInputFile: file.
+	parsedDocument properties: (self metadataConfigurationForDocument: parsedDocument).
+	transformedDocument := self transformDocument: parsedDocument.
+	writtenFile := self writeDocument: transformedDocument.
+	self postWriteTransform: writtenFile.
+	^ PRSuccess new.
+	
+	
+PRAbstractOutputDocument >> parseInputFile: anInputFile
 
-MicMonospaceFormat >> kind
-	^ #monospace
-
-MicBoldFormat >> kind
-	^ #bold
-
-from: aStartInteger to: anEndInteger withSubstring: aString
-	^ self new 
-		start: aStartInteger; 
-		end: anEndInteger;  
-		substring: aString; 
-		children: Array empty; 
-		cleanSubstring; yourself.	
-
-
-TypeObject
+	^ PRDocument parser parse: anInputFile file	
 
 
-Video rental 
-- that scratch video DVD vs the IMDB database description
+Solution
 
-Plant collector
-- My plant size flowering vs. its description
+PRInputDocument << #PRPillarInputDocument
+	tag: 'Base';
+	package: 'Pillar-ExporterCore'
+
+
+PRInputDocument << #PRMicrodownInputDocument
+	package: 'Pillar-Microdown'
+
+
+
+PRAbstractOutputDocument >> parseInputFile: anInputFile
+	
+	^ anInputFile parsedDocument
+
+PRPillarInputDocument >> parsedDocument
+
+	^ self parserClass parse: file
+
+PRMicrodownInputDocument >> parsedDocument
+
+	^ (self parserClass parse: file) asPillar
+
+Registration
+
+PRInputDocument class >> inputClassForFile: aFile
+	
+	^ self subclasses
+		detect: [ :each | each doesHandleExtension: aFile extension ]
+		ifNone: [ PRNoInputDocument  ]
+		
+PRInputDocument >> filesToBuildOn: aProject
+
+	^ files collect: [ :file | 
+				(PRInputDocument inputClassForFile: file asFileReference) new
+					project: aProject;
+					file: (aProject baseDirectory resolve: file);
+				yourself ]		

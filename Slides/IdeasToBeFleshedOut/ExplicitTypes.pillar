@@ -1,0 +1,65 @@
+About explicit type marker and TypeObject
+
+Non explicit type check
+
+
+Kind of MicInliner
+
+- Never change
+- Does not need a setter
+- Does not need a state
+- Is not needed
+
+Explicit type check 
+
+MicElement << #MicInlineBlock
+	slots: { #start . #end . #kind . #children . #substring };
+	tag: 'ModelInline';
+	package: 'Microdown'
+	
+kind: aKind
+	kind := aKind
+	
+kind
+	^ kind
+
+from: aStartInteger to: anEndInteger withKind: aKind withSubstring: aString
+	^ self new 
+		start: aStartInteger; 
+		end: anEndInteger; 
+		kind: aKind; 
+		substring: aString; 
+		children: Array empty; 
+		cleanSubstring; yourself.	
+
+
+
+MicElement << #MicInlineBlock
+	slots: { #start . #end . #children . #substring };
+	tag: 'ModelInline';
+	package: 'Microdown'
+	
+
+MicMonospaceFormat >> kind
+	^ #monospace
+
+MicBoldFormat >> kind
+	^ #bold
+
+from: aStartInteger to: anEndInteger withSubstring: aString
+	^ self new 
+		start: aStartInteger; 
+		end: anEndInteger;  
+		substring: aString; 
+		children: Array empty; 
+		cleanSubstring; yourself.	
+
+
+TypeObject
+
+
+Video rental 
+- that scratch video DVD vs the IMDB database description
+
+Plant collector
+- My plant size flowering vs. its description
