@@ -1,5 +1,5 @@
 SOURCEDIRECTORY = Slides
-OUTPUTDIRECTORY = book-result
+OUTPUTDIRECTORY = __result
 LATEXTEMPLATE = support/templates/slides.pharobeamer.template
 HTMLTEMPLATE = support/templates/presentation.deckjs.template
 
