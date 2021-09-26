@@ -1,4 +1,8 @@
-About 
+{
+    "title":"About printOn: and asString",
+    "subtitle":"",
+    "author":"Stéphane Ducasse"
+}
 
 
 printOn: aStream 

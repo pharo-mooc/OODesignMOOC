@@ -1,4 +1,8 @@
-Reifying and delagating behavior
+{
+    "title":"Reifying and delagating behavior",
+    "subtitle":"",
+    "author":"Stéphane Ducasse"
+}
 
 
 PRInputDocument >> filesToBuildOn: aProject

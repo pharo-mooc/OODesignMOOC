@@ -1,50 +1,105 @@
-We should revisit the share by default and possible to customize and shared with Custom no copies 
+{
+    "title":"About Sharing",
+    "subtitle":"",
+    "author":"Stéphane Ducasse"
+}
 
 
-BlCustomVisuals.class.st 
+${slide:title=Thinking more about sharing}$
 
-I'm the counterpart of the `BlDefaultVisuals`. I'm usually stored in place of `BlDefaultVisuals` singleton to accumulate modifications of the default. I accumulate modifications because contrary to `BlDefaultVisuals` my setters modify myself.
- To use me correctly my users should always store the result of the setters sent to a visuals as shown in the example below.
- ```
- BlElement >> effect: anEffect
- 	""Change my effect to a given one requesting draw area invalidations.
- 	anEffect must not be nil""
- 	visuals := visuals effect: anEffect.
- 	self invalidate
+Check shared variable and instance variable in Scanner
+
+
+${slide:title=BlElementVisuals and setup}$
+	 
+I'm a kind of pattern to make sure that many default values can be shared by default, but that modifications to these defaults can also be used on a per instance level. 
+
+${slide:title=BlElementVisuals}$
+[[[
+Object << #BlElementVisuals
+	sharedVariables: { #DefaultBorder . #DefaultBackground . #DefaultGeometry . #DefaultVisibility };
+	package: 'Bloc'
+]]]
+
+
+
+[[[
+BlElementVisuals >> defaultBackground
+	^ DefaultBackground
+]]]
+
+
+[[[
+BlElementVisuals >> background: aBlBackground
+	"Change the background and return new visuals to be used instead of the previous one (not necessarily a new instance)"
+
+	^ self subclassResponsibility
+]]]
+
+Same for the others.
+
+
+${slide:title=BlDefaultVisuals}$
+
+- ==BlDefaultVisuals== a kind of singleton that holds many default values to be shared between multiples elements.
+
+
+ Getters access default shared value
+[[[
+ BlDefaultVisuals >> background
+ 	^ self defaultBackground
+]]]
+
+
+${slide:title=BlDefaultVisuals: setters are key}$
+
+In addition, ==BlDefaultVisuals== of read only because when my setters are executed, they do not modify myself but
+create and return a new instance of ==BlCustomVisuals==.
+
+[[[
+BlDefaultVisuals >> background: aBlBackground
+	"Change the background and return new visuals to be used instead of the previous one (not necessarily a new instance)"
+
+	^ BlCustomVisuals new background: aBlBackground
+]]]
+
+
+${title=BlCustomVisuals}$
+
+Now we can do instance specific customization
+
+[[[
+BlCustomVisuals >> background: aBlBackground
+	"Change the background and return new visuals to be used instead of the previous one (not necessarily a new instance)"
+
+	background := aBlBackground
+]]]
+
+BlCustomVisuals stored in place of ==BlDefaultVisuals` singleton to accumulate modifications of the default. 
+I accumulate modifications because contrary to `BlDefaultVisuals` my setters modify myself.
+
+ 
+ 
+
+${title=There is a catch}$
+
+Users should always store the result of the setters sent to a visuals
+
+[[[
+BlElement >>background: aBlBackground
+	"Change my background to a given one.
+	Color and Form can be used as background - they will be converted to an appropriate background object.
+	It is also possible to create a more complicated composite background with the help of BlBackgroundBuilder.
+	Raises BlElementBackgroundChangedEvent.
+	aBlBackground must not be nil. "
 	
-BlDefaultVisuals.class.st 
+	...
+
+	visuals := visuals background: aNewBackground.
 	
-	I'm a singleton that holds many default values to be shared between multiples elements. 
-	 In addition, I'm kind of read only because when my setters are executed, they do not modify myself but       
-	 create and return a new instance of `BlCustomVisuals`.
-	 Check for example:
-	 ```
-	 BlDefaultVisuals >> effect: aBlElementEffect
-	 		""Change the effect and return new visuals to be used instead of the previous one (not necessarily a new instance)""
-	 		<return: #BlElementVisuals>
-	 		^ BlCustomVisuals new effect: aBlElementEffect
-	 ```
-	 The KEY point is that in BlElement the RESULT of the setter (badly name message in fact) must be stored.
-	 ```
-	 BlElement >> effect: anEffect
-	 		""Change my effect to a given one requesting draw area invalidations.
-	 		anEffect must not be nil""
-	 		visuals := visuals effect: anEffect.
-	 		self invalidate
-	 ```
-	 My counterpart, `BlCustomVisuals` is offering the same API but its setter are normal setters that modify the instance. 
-	 ```
-	 BlCustomVisuals >> effect: aBlElementEffect
-	 		""Change the effect and return new visuals to be used instead of the previous one (not necessarily a new instance)""
-	 		<return: #BlElementVisuals>
-	 		effect := aBlElementEffect
-	 ```
-	 ### Discussion 
-	 The result could have been achieved by having an instance variable and a classVariable with the instance variable pointing to the classVariable by default. But this implementation would have forced to copy the customized version after each setter. 
-	 
-	 
-BlElementVisuals.class.st 
-	 
-	 I'm a kind of pattern to make sure that many default values can be shared by default, but that modifications to these defaults can also be used on a per instance level. 
-	  Read the comments of `BlDefaultVisuals` and `BlCustomVisuals`.
- 	
+	...
+]]]
+
+
+
+
