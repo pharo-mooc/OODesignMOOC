@@ -1,0 +1,14 @@
+2021-02-03
+-Test-Why.pillar 
+- Test-why2.pillar -> Tests-1-101.pillar
+ 	Revised the logic because it was strange
+- Test-why done a pass 
+	split it and removing the bastract stuff I could not understand and it was boring,
+- Test TDD (may be remove some duplication with 101)
+- Test-XTDD (should redo when P9 is out)
+
+Please Guille have a look because I'm sure you get ideas!
+
+- Intro-CaseStudy-Intro-CaseStudy-TurningAProcIntoAnObject
+Done
+

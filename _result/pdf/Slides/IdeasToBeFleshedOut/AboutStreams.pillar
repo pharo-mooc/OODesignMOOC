@@ -1,0 +1,18 @@
+{
+    "title":"About printOn: and asString",
+    "subtitle":"",
+    "author":"Stéphane Ducasse"
+}
+
+
+printOn: aStream 
+
+	super printOn: aStream. 
+	aStream nextPutAll: foo asString
+
+vs
+
+printOn: aStream 
+
+	super printOn: aStream. 
+	foo printOn: aStream

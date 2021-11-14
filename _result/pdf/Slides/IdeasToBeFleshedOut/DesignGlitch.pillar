@@ -1,0 +1,77 @@
+{
+    "title":"Reifying and delagating behavior",
+    "subtitle":"",
+    "author":"Stéphane Ducasse"
+}
+
+
+PRInputDocument >> filesToBuildOn: aProject
+
+	^ files collect: [ :file | 
+			PRInputDocument new
+				project: aProject;
+				file: (aProject baseDirectory resolve: file);
+				yourself ]
+
+PRInputDocument >>parser
+	
+	file extension = 'pillar'
+		ifTrue: [ ^ PRDocument parser ].
+	self error: 'No parser for document extension: ', file extension
+	
+	
+PRAbstractOutputDocument >> buildOn: aPRProject 
+	
+	| parsedDocument transformedDocument writtenFile |
+	parsedDocument := self parseInputFile: file.
+	parsedDocument properties: (self metadataConfigurationForDocument: parsedDocument).
+	transformedDocument := self transformDocument: parsedDocument.
+	writtenFile := self writeDocument: transformedDocument.
+	self postWriteTransform: writtenFile.
+	^ PRSuccess new.
+	
+	
+PRAbstractOutputDocument >> parseInputFile: anInputFile
+
+	^ PRDocument parser parse: anInputFile file	
+
+
+Solution
+
+PRInputDocument << #PRPillarInputDocument
+	tag: 'Base';
+	package: 'Pillar-ExporterCore'
+
+
+PRInputDocument << #PRMicrodownInputDocument
+	package: 'Pillar-Microdown'
+
+
+
+PRAbstractOutputDocument >> parseInputFile: anInputFile
+	
+	^ anInputFile parsedDocument
+
+PRPillarInputDocument >> parsedDocument
+
+	^ self parserClass parse: file
+
+PRMicrodownInputDocument >> parsedDocument
+
+	^ (self parserClass parse: file) asPillar
+
+Registration
+
+PRInputDocument class >> inputClassForFile: aFile
+	
+	^ self subclasses
+		detect: [ :each | each doesHandleExtension: aFile extension ]
+		ifNone: [ PRNoInputDocument  ]
+		
+PRInputDocument >> filesToBuildOn: aProject
+
+	^ files collect: [ :file | 
+				(PRInputDocument inputClassForFile: file asFileReference) new
+					project: aProject;
+					file: (aProject baseDirectory resolve: file);
+				yourself ]		

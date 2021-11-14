@@ -1,0 +1,114 @@
+Rethinking object-oriented programming with TDD
+
+You will never program the same after following this mooc. 
+
+
+
+
+
+One day preparation 
+===================
+Syntax/Model
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week1/C019-W1S04-PharoModelInaNushell.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week1/C019-W1S05-PharoSyntaxInANutshell.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week1/C019-W1S06-ClassAndMethodDefinition.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S01-Messages.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S02-Messages-ForTheJavaProgrammers.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S03-Messages-Precedence.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S04-Messages-Sequence.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S06-Blocks.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S07-Loops.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S09-ParenthesisVsSquareBrackets.pdf
+ -http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S10-Yourself.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week3/C019-W3S07-Basic-ArraySetOrderedCollection.pdf
+
+Exercices: 
+- ProfStef
+- Coding the counter
+	http://rmod-pharo-mooc.lille.inria.fr/MOOC/Exercises/Exercises-Counter/
+
+
+=================================================================================================
+Spoc 
+* requires a video (discussion avec jm hasenfraz)
+
+TDD + TTD Xtreme
+================
+
+Why Testing
+- https://github.com/SquareBracketAssociates/OODesignMOOC/blob/master/Slides/1-ToReview/Design-WhyTesting.pillar (a faire)
+
+SUnit: Unit Tests in Pharo
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week5/C019-W5S06-SUnit.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W5/C019SD-W5-S6-v3.mp4
+
+Rejouer la video
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W1/C019-W1S-Videos-Redo-Counter-Traditional-FR-v4.mp4
+
+
+
+Essence of Object Programming
+=========================
+
+Sending a message
+=================
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week2/C019-W2S11-Design-EssenceOfDispatchExo.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week3/C019-W3S01-Design-EssenceOfDispatchNot.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W3/C019SD-W3-S1-v3.mp4
+
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week3/C019-W3S02-Design-EssenceOfDispatch.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W3/C019SD-W3-S2-v3.mp4
+
+Inheritance 
+===========
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week4/C019-W4S01-InheritanceAndLookup-1-Inheritance.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W4/C019SD-W4-S1-v3.mp4
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week4/C019-W4S02-InheritanceAndLookup-2-Lookup.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W4/C019SD-W4-S2-v3.mp4
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week4/C019-W4S03-InheritanceAndLookup-3-Super.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W4/C019SD-W4-S2-v3.mp4http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W4/C019SD-W4-S3-v3.mp4
+
+Hooks And Template
+==================
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week6/C019-W6S01-DidYouUnderstandSuper.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W6/C019SD-W6-S1-v3.mp4
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week6/C019-W6S04-SelfSendsArePlanForReuse.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W6/C019SD-W6-S4-v3.mp4
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Slides/Week6/C019-W6S05-HookAndTemplate.pdf
+- http://rmod-pharo-mooc.lille.inria.fr/MOOC/Videos/W6/C019SD-W6-S5-v3.mp4
+
+
+Spoc Specific  Material
+===================
+* requires a video (discussion avec jm hasenfraz)
+
+- Intro to design patterns *
+
+- Avoid null / Null Pattern
+
+- Double dispatch *
+-- Exercise die
+-- Double dispatch *
+-- Learning from a real example * 
+
+- Use Vs Inheritance *
+- Visitor and Composite * 
+-- Expressions exercise
+-- Pillar hands-on
+
+- Dice New Vs. self class new
+
+- Less Hardcoded References * pas ecrit
+
+- Dual Interfaces *
+
+- Class Methods as Extensibility Point
+
+- Law of Demeter *
+
+- OverloadingInJava *
+
+- Private Java *
+
+- Protection and Typing *
+

@@ -1,0 +1,93 @@
+{
+    "title":"Protection and Typing in OO Languages"
+}
+
+${slide:title=What is Protection?}$
+
+Controlling access/visibility/... of objects' properties (instance variables / methods) 
+
+${slide:title=Common Protection Policies}$
+
+- Public
+- Private
+- Protected
+- Package (Java)
+- Friend (C++)
+...
+
+${slide:title=Friend in C++}$
+
+A friend function of a class is defined outside that class' scope but it has the right to access all private and protected members of this class. Friend functions appears in the class definition but they are not methods.
+
+[[[
+class Person {
+   string name;
+public:
+   friend void printPerson( Person p );
+   void setName( string n );
+};
+
+/* this is function that does not belong to the Person class
+ but it can access internal properties of instances of it */
+void printPerson( Person p ) {
+	cout << "Person " << p.name << endl;
+}
+]]]
+
+${slide:title=Other Protection: Final in Java}$
+
+A final method in a class cannot be redefined in a subclass.
+
+an heresy in OO world?
+
+${slide:title=Private}$
+
+- Be carreful, private may not be what you expect!
+- Usually protected better suits OO thinking
+-- protected in Java lets other classes in the same package access methods and fields
+-- different in C\#
+
+
+${slide:title=Ensuring Protection}$
+
+- At compile-time (be carreful!)
+- Dynamically 
+
+${slide:title=Private in Java}$
+
+[[[language=java
+public class Person {
+    private boolean alive = true;
+	 ...
+    private void 	suicide() { alive = false; } // Private to a person
+
+    public void love(Person p) {
+        myLove = p;
+        if ( this.isMurderer() ) p.suicide();  // <-- Oops, is that possible? yes!
+    }
+	 	 
+     public static void main(String args[]) {
+    	  ...
+	     aBadPerson.setMurderer(true);
+        aBadPerson.love(aLovedPerson);
+        System.out.println(aLovedPerson.isAlive()); // false
+    }  
+}
+]]]
+
+
+${slide:title=Private in Java: What happened?}$
+
+private is not ensured per object
+
+${slide:title=Simple Protection Model in Pharo}$
+
+- instance variables are protected
+- methods are public
+
+${slide:title=Conclusion}$
+
+- Some protection policies are complex 
+- Some protection policies limit extensibility (against OO thinking) 
+- Ensuring protection at compile-time is hard
+

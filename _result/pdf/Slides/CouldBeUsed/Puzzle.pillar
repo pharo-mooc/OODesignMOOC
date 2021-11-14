@@ -1,0 +1,32 @@
+{
+	"title":"Puzzle: super"
+}
+
+
+${slide:title=Puzzle}$
+
+[[[
+
+class A {
+    boolean test() {
+        return super.getClass() == this.getClass();
+    }
+}
+
+class B extends A {
+}
+]]]
+
+
+${slide:title=Puzzle}$
+
+[[[
+public class Main {
+    public static void main(String[] argv) {
+        System.out.println(new B().test());
+    }
+}
+]]]
+
+What is the result?
+
